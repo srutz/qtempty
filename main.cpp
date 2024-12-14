@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         auto text = QString("%1").arg(QChar((c)));
         auto label = new QLabel(text, window.get());
         label->setAlignment(Qt::AlignCenter);
-        label->setStyleSheet("background-color: #f1f1f1; font-size: 64px;");
+        label->setStyleSheet("color: #000000; min-width: 64px; background-color: #f1f1f1; font-size: 64px;");
         label->setContentsMargins(QMargins(16, 16, 16, 16));
         auto row = i / PER_ROW;
         auto column = i % PER_ROW;
