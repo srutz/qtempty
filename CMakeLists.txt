@@ -9,6 +9,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 set(PROJECT_SOURCES
     main.cpp
 )
-qt_add_executable(qtapp MANUAL_FINALIZATION ${PROJECT_SOURCES})
+qt_add_executable(qtapp MANUAL_FINALIZATION ${PROJECT_SOURCES}
+)
 target_link_libraries(qtapp PRIVATE Qt6::Widgets)
 qt_finalize_executable(qtapp)
