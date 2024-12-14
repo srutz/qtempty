@@ -1,20 +1,19 @@
 #include <QApplication>
 #include <QWidget>
 #include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
 
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv); QWidget window;
+    window.setWindowTitle("Slots"); window.setGeometry(100, 100, 500, 300);
 
-    QWidget window;
-    window.setWindowTitle("Layouts Beispiel");
-    window.move(100, 100);
-
-    auto layout = new QVBoxLayout(&window);
-    auto label1 = new QLabel("Label 1");
-    layout->addWidget(label1);
-    window.show();
-    return app.exec();
+    auto mainLayout = new QVBoxLayout(&window);
+    auto button = new QPushButton("Button");
+    button->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    mainLayout->addWidget(button,0, Qt::AlignHCenter);
+    QObject::connect(button, &QPushButton::clicked, [&]() {
+        qDebug() << "Button wurde geklickt";
+    });
+    window.show(); return app.exec();
 }
-
