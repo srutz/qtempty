@@ -9,19 +9,12 @@ int main(int argc, char *argv[])
 
     QWidget window;
     window.setWindowTitle("Layouts Beispiel");
+    window.move(100, 100);
 
-    QVBoxLayout *layout = new QVBoxLayout(&window);
-
-    QLabel *label1 = new QLabel("Label 1");
-    QLabel *label2 = new QLabel("Label 2");
-    QLabel *label3 = new QLabel("Label 3");
-
+    auto layout = new QVBoxLayout(&window);
+    auto label1 = new QLabel("Label 1");
     layout->addWidget(label1);
-    layout->addWidget(label2);
-    layout->addWidget(label3);
-
     window.show();
-
     return app.exec();
 }
 
