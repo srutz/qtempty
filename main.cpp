@@ -8,8 +8,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    QWidget window;
+    QApplication app(argc, argv); QWidget window;
     window.setWindowTitle("Webview"); window.setGeometry(50, 100, 920, 800);
     auto layout = new QVBoxLayout(&window);
     auto webView = new QWebEngineView(&window);
@@ -22,15 +21,13 @@ int main(int argc, char *argv[])
         toolbarLayout->addWidget(b);
         return b;
     };
-    QWidget::connect(makebutton("Memory"),  &QPushButton::clicked, &window, [=]() {
-        webView->setUrl(QUrl("https://srutz.github.io/vuememory/"));
-    });
-    QWidget::connect(makebutton("Solitaire"),  &QPushButton::clicked, &window, [=]() {
-        webView->setUrl(QUrl("https://srutz.github.io/vuesolitaire/"));
-    });
-    QWidget::connect(makebutton("GFU"),  &QPushButton::clicked, &window, [=]() {
-        webView->setUrl(QUrl("https://www.gfu.net/seminare.html"));
-    });
+    auto makeurlbutton = [=] (const QString &t, const QString &url) {
+        auto button = makebutton(t);
+        QWidget::connect(button,  &QPushButton::clicked, button, [=]() { webView->setUrl(QUrl(url)); });
+    };
+    makeurlbutton("Memory", "https://srutz.github.io/vuememory/");
+    makeurlbutton("Solitaire", "https://srutz.github.io/vuesolitaire/");
+    makeurlbutton("GFU", "https://www.gfu.net/seminare.html");
     QWidget::connect(makebutton("Say hi from Javascript"),  &QPushButton::clicked, &window, [=]() {
         webView->page()->runJavaScript("alert('Hello from Qt');");
     });
