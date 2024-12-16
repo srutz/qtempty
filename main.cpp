@@ -1,5 +1,7 @@
 #include <QApplication>
 #include <QWidget>
+#include <QObject>
+#include <QTimer>
 #include <QLabel>
 #include <QPushButton>
 #include <QHBoxLayout>
@@ -8,8 +10,12 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv); QWidget window;
-    window.setWindowTitle("Webview"); window.setGeometry(50, 100, 920, 800);
+    QApplication app(argc, argv);
+    QObject::connect(&app, &QApplication::lastWindowClosed, [] { QApplication::quit(); });
+
+    QWidget window;
+    window.setWindowTitle("Webview"); window.setGeometry(50, 100, 950, 800);
+
     auto layout = new QVBoxLayout(&window);
     auto webView = new QWebEngineView(&window);
     auto output = new QLabel(&window);
@@ -23,17 +29,18 @@ int main(int argc, char *argv[])
     };
     auto makeurlbutton = [=] (const QString &t, const QString &url) {
         auto button = makebutton(t);
-        QWidget::connect(button,  &QPushButton::clicked, button, [=]() { webView->setUrl(QUrl(url)); });
+        QObject::connect(button,  &QPushButton::clicked, button, [=]() { webView->setUrl(QUrl(url)); });
     };
     makeurlbutton("Memory", "https://srutz.github.io/vuememory/");
     makeurlbutton("Solitaire", "https://srutz.github.io/vuesolitaire/");
     makeurlbutton("GFU", "https://www.gfu.net/seminare.html");
-    QWidget::connect(makebutton("Say hi from Javascript"),  &QPushButton::clicked, &window, [=]() {
+    QObject::connect(makebutton("Say hi from Javascript"),  &QPushButton::clicked, &window, [=]() {
         webView->page()->runJavaScript("alert('Hello from Qt');");
     });
-    QWidget::connect(makebutton("Call JS-Function"),  &QPushButton::clicked, &window, [=]() {
+    QObject::connect(makebutton("Call JS-Function"),  &QPushButton::clicked, &window, [=]() {
         webView->page()->runJavaScript("Math.pow(2, 10)", [=] (auto result) {
             output->setText(QString("The result is %1").arg(result.toDouble()));
+            QTimer::singleShot(5000, [=]() {output->setText(""); });
         });
     });
     toolbarLayout->addStretch(1);
