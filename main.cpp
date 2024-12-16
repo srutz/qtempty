@@ -8,8 +8,7 @@
 #include <QVBoxLayout>
 #include <QWebEngineView>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QObject::connect(&app, &QApplication::lastWindowClosed, [] { QApplication::quit(); });
 
@@ -45,7 +44,7 @@ int main(int argc, char *argv[])
     });
     toolbarLayout->addStretch(1);
     layout->addWidget(toolbar); layout->addWidget(webView, 1); layout->addWidget(output);
-    webView->setUrl(QUrl("https://srutz.github.io/vuesolitaire/"));
+    QTimer::singleShot(1, [=]() { webView->setUrl(QUrl("https://srutz.github.io/vuesolitaire/")); });
     window.show(); return app.exec();
 }
 
