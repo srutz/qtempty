@@ -7,8 +7,7 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    QWidget window;
-    window.setWindowTitle("Layouts"); window.setGeometry(100, 100, 500, 300);
+    QWidget window; window.setGeometry(100, 100, 500, 300);
     if (argc != 2) {
         QMessageBox::critical(&window, "Falscher Aufruf", "Aufruf mit Bild als erster Parameter");
         QApplication::exit(1);
