@@ -40,8 +40,7 @@ int main(int argc, char *argv[])
         QMessageBox::warning(&window, "Alert", "This is an alert message.");
     });
     layout->addWidget(b3);
-    layout->addStretch()
-
+    layout->addStretch();
     window.show();
     return app.exec();
 }
