@@ -6,9 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
     QWidget window;
-    window.setWindowTitle("Layouts Beispiel");
     window.move(100, 100);
 
     auto layout = new QVBoxLayout(&window);
