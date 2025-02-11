@@ -34,6 +34,7 @@ public:
     const Person& getPerson(int index) const { return m_persons.at(index); }
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override {
+        // werte zurückgeben, als QVariant
         if (!index.isValid()) {
             return QVariant();
         }
@@ -56,6 +57,7 @@ public:
     }
 
     Qt::ItemFlags flags(const QModelIndex &index) const override {
+        // steuere selektierbarkeit, steurer editierbarkeit und enabled-state
         auto& person = m_persons.at(index.row());
         Qt::ItemFlags flags = Qt::ItemIsSelectable;
         if (person.age > 30) {
@@ -91,20 +93,17 @@ public:
             result = true;
             break;
         }
-        //qDebug() << "person dump";
-        //for (const auto &person : m_persons) { qDebug() << person.email << ", " << person.age; }
         if (result) {
+            // wenn edit erfolgreiche, schicke signal aus
             QList<int> roles;
             roles << Qt::EditRole;
             emit dataChanged(index, index, roles);
-            emit editValue(index, oldValue, person);
         }
         return result;
     }
 
 
 signals:
-    void editValue(QModelIndex index, Person oldValue, Person newValue);
 };
 
 #endif // MYMODEL_H

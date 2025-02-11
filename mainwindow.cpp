@@ -28,17 +28,11 @@ MainWindow::MainWindow(QWidget *parent)
     mymodel->addPerson({ .email = "michael@gmx.de", .age = 15 });
 
     tableView->setModel(mymodel);
-    //tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
-    connect(mymodel, &QAbstractItemModel::dataChanged, this, [this,mymodel] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
-        auto p = mymodel->getPerson(topLeft.row());
-        qDebug() << "lambda: " << topLeft << ", " << bottomRight << ", " << p;
-    });
     connect(mymodel, &QAbstractItemModel::dataChanged, this, &MainWindow::tableDataChanged);
     splitter->addWidget(tableView);
 
-    //auto tableView2 = new QTableView(this);
-    //tableView2->setModel(mymodel);
+    // ein zweites views, welches die älteste Person anzeigt
     auto text = new QTextEdit(this);
     auto initText = [text,mymodel] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
         auto oldestIndex = -1;
@@ -59,9 +53,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(mymodel, &QAbstractItemModel::dataChanged, this, initText);
     splitter->addWidget(text);
 
-    connect(mymodel, &MyModel::editValue, this, [] (QModelIndex index, Person oldValue, Person newValue){
-        qDebug() << "change" << index << ": " << oldValue << " => " << newValue;
-    });
 }
 
 void MainWindow::tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {
