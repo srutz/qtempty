@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
 qt_add_executable(TableView
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
+    mymodel.h mymodel.cpp
 )
 
 target_link_libraries(TableView PRIVATE Qt6::Widgets)

@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
+
 private:
     Ui::MainWindow *ui;
 };
