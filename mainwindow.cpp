@@ -24,15 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     tableView->setModel(mymodel);
     //tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
-    for (auto y = 0; y < model->rowCount(); y++) {
-        for (auto x = 0; x < model->columnCount(); x++) {
-            model->setData(model->index(y, x), QVariant("abc"));
-        }
-    }
-    connect(model, &QAbstractItemModel::dataChanged, this, [this] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
+    connect(mymodel, &QAbstractItemModel::dataChanged, this, [this] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
         qDebug() << "lambda: " << topLeft << ", " << bottomRight;
     });
-    connect(model, &QAbstractItemModel::dataChanged, this, &MainWindow::tableDataChanged);
+    connect(mymodel, &QAbstractItemModel::dataChanged, this, &MainWindow::tableDataChanged);
     layout->addWidget(tableView);
 }
 
