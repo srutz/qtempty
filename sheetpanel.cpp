@@ -45,7 +45,7 @@ SheetPanel::SheetPanel(QWidget *parent): QWidget(parent) {
         this->hideSheet(true);
     });
     closeButton->setFlat(true);
-    closeButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::WindowClose));
+    closeButton->setIcon(QIcon::fromTheme("window-close-symbolic"));
     buttonBarLayout->addWidget(closeButton);
 }
 
@@ -62,6 +62,7 @@ void SheetPanel::showSheet(QWidget *destination, QWidget *content) {
         child->setParent(nullptr);
     }
     auto contentLayout = new QVBoxLayout(m_sidepanel);
+    contentLayout->setContentsMargins(QMargins(0, 0, 0, 0));
     m_buttonBar->setParent(m_sidepanel);
     contentLayout->addWidget(m_buttonBar, 0);
     if (content) {

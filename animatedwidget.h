@@ -11,16 +11,46 @@ class AnimatedWidget : public QWidget
 public:
     Q_PROPERTY(QPoint position READ position WRITE setPosition NOTIFY positionChanged)
 
-    explicit AnimatedWidget(QWidget *parent = nullptr);
-    QPoint position() const;
-    void setPosition(const QPoint position);
-    void setPositionA(const QPoint position, int durationMs = 350, std::function<void()> onFinished = nullptr); // animated
+    explicit AnimatedWidget(QWidget *parent = nullptr) : QWidget(parent)
+    {
+    }
+
+    QPoint position() const { return m_position; };
+    void setPosition(const QPoint position)
+    {
+        // qDebug() << "setPosition. oldValue=" << m_position << " to " << position << (m_position == position);
+        if (m_position == position) {
+            return;
+        }
+        m_position = position;
+        this->move(m_position);
+        emit positionChanged(m_position);
+    }
+    // animated
+    void setPositionA(const QPoint position, int durationMs = 350, std::function<void()> onFinished = nullptr)
+    {
+        if (positionAnimation) {
+            positionAnimation->stop();
+            delete positionAnimation;
+        }
+        auto anim = new QPropertyAnimation(this, "position");
+        this->positionAnimation = anim;
+        anim->setEasingCurve(QEasingCurve::InOutCubic);
+        anim->setDuration(durationMs);
+        anim->setStartValue(m_position);
+        anim->setEndValue(position);
+        anim->start();
+        if (onFinished != nullptr) {
+            anim->connect(anim, &QPropertyAnimation::finished, this, [=]()
+                          { onFinished(); });
+        }
+    }
 
 signals:
     void positionChanged(const QPoint point);
 
 private:
-    QPoint m_position;
+    QPoint m_position = QPoint(0, 0);
     QPropertyAnimation *positionAnimation = nullptr;
 };
 
