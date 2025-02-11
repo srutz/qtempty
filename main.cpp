@@ -1,18 +1,11 @@
+#include "mainwindow.h"
+
 #include <QApplication>
-#include <QWidget>
-#include <QLabel>
-#include <QVBoxLayout>
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    QWidget window;
-    window.move(100, 100);
-
-    auto layout = new QVBoxLayout(&window);
-    auto label1 = new QLabel("Label 1");
-    layout->addWidget(label1);
-    window.show();
-    return app.exec();
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
-
