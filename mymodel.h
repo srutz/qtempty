@@ -5,6 +5,7 @@
 #include <QAbstractTableModel>
 #include <vector>
 
+
 using std::vector;
 
 struct Person {

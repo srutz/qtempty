@@ -33,13 +33,11 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "lambda: " << topLeft << ", " << bottomRight;
     });
     connect(model, &QAbstractItemModel::dataChanged, this, &MainWindow::tableDataChanged);
-
     layout->addWidget(tableView);
 }
 
 void MainWindow::tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {
     qDebug() << " slot:" << topLeft << ", " << bottomRight;
-
 }
 
 MainWindow::~MainWindow()
