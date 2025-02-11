@@ -10,6 +10,8 @@
 #include <QAction>
 #include <QTextEdit>
 #include <QTreeView>
+#include <QMainWindow>
+#include <QResizeEvent>
 #include "mymodel.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    m_sheetPanel = new SheetPanel(this);
 
     auto layout = new QVBoxLayout(this->centralWidget());
     auto splitter = new QSplitter(Qt::Horizontal, this);
@@ -64,10 +68,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::showContextMenu(QWidget *parent, const QPoint &pos) {
     qDebug() << "context menu requested on text";
-
     QMenu menu(parent);
     {
-        auto action1 = new QAction("&Clear Text", &menu);
+        auto action1 = new QAction("&Action 1", &menu);
         QPixmap icon1(":/icons/download.svg");
         action1->setIcon(icon1);
         menu.addAction(action1);
@@ -76,14 +79,19 @@ void MainWindow::showContextMenu(QWidget *parent, const QPoint &pos) {
         });
     }
     {
-        auto action2 = new QAction("&Clear Text", &menu);
+        auto action2 = new QAction("&Show SidePanel", &menu);
         action2->setIcon(QIcon::fromTheme("edit-clear"));
         menu.addAction(action2);
-        QObject::connect(action2, &QAction::triggered, this, [] {
-            qDebug() << "action2 triggered";
+        QObject::connect(action2, &QAction::triggered, this, [this] {
+            m_sheetPanel->showSheet(this->centralWidget(), m_sheetContent);
         });
     }
     menu.exec(parent->mapToGlobal(pos));
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event) {
+    QMainWindow::resizeEvent(event);
+    m_sheetPanel->layout();
 }
 
 void MainWindow::tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {

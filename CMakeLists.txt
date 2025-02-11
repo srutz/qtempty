@@ -25,6 +25,8 @@ qt_add_executable(TableView
     ${PROJECT_SOURCES}
     mymodel.h mymodel.cpp
     icons.qrc
+    sheetpanel.h sheetpanel.cpp
+    animatedwidget.h animatedwidget.cpp
 )
 
 target_link_libraries(TableView PRIVATE Qt6::Widgets)
