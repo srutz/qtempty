@@ -11,9 +11,14 @@ using std::vector;
 struct Person {
     QString email;
     int age = 33;
+    QString city = "Saarbrücken";
     friend QDebug operator<<(QDebug dbg, const Person &person) {
         dbg.nospace() << "Person(email: " << person.email << ", age: " << person.age << ")";
         return dbg.space();
+    }
+    friend QTextStream& operator<<(QTextStream &out, const Person &person) {
+        out << "Person(email: " << person.email << ", age: " << person.age << ", city: " << person.city << ")";
+        return out;
     }
 };
 
@@ -24,7 +29,7 @@ class MyModel : public QAbstractTableModel
 public:
     explicit MyModel(QObject *parent = nullptr);
     void addPerson(Person person) { m_persons.push_back(person); }
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override { return 2; }
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override { return 3; }
     int rowCount(const QModelIndex &parent = QModelIndex()) const override { return m_persons.size(); }
     const Person& getPerson(int index) const { return m_persons.at(index); }
 
@@ -41,6 +46,9 @@ public:
                 break;
             case 1:
                 returnValue = QVariant(p.age);
+                break;
+            case 2:
+                returnValue = p.city;
                 break;
             }
         }
@@ -62,18 +70,25 @@ public:
         }
         auto result = false;
         auto& person = m_persons.at(index.row());
+        auto oldValue = person;
         switch(index.column()) {
         case 0:
             person.email = value.toString();
             result = true;
             break;
         case 1:
-            auto success = false;
-            auto i = value.toInt(&success);
-            if (success) {
-                person.age = i;
-                result = true;
+            {
+                auto success = false;
+                auto i = value.toInt(&success);
+                if (success) {
+                    person.age = i;
+                    result = true;
+                }
             }
+            break;
+        case 2:
+            person.city= value.toString();
+            result = true;
             break;
         }
         //qDebug() << "person dump";
@@ -82,12 +97,14 @@ public:
             QList<int> roles;
             roles << Qt::EditRole;
             emit dataChanged(index, index, roles);
+            emit editValue(index, oldValue, person);
         }
         return result;
     }
 
 
 signals:
+    void editValue(QModelIndex index, Person oldValue, Person newValue);
 };
 
 #endif // MYMODEL_H
