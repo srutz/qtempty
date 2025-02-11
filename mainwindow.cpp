@@ -7,7 +7,9 @@
 #include <QStandardItemModel>
 #include <QTimer>
 #include <QSplitter>
+#include <QAction>
 #include <QTextEdit>
+#include <QTreeView>
 #include "mymodel.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -50,9 +52,38 @@ MainWindow::MainWindow(QWidget *parent)
         text->setText(oldestIndex == -1 ? "-" : QString("Alterspräsident: ") + mymodel->getPerson(oldestIndex).email);
     };
     initText(mymodel->index(0, 0), mymodel->index(0, 0));
+    text->setReadOnly(true);
     connect(mymodel, &QAbstractItemModel::dataChanged, this, initText);
     splitter->addWidget(text);
 
+    text->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(text, &QWidget::customContextMenuRequested, this, [this,text] (const QPoint &pos) {
+        this->showContextMenu(text, pos);
+    });
+}
+
+void MainWindow::showContextMenu(QWidget *parent, const QPoint &pos) {
+    qDebug() << "context menu requested on text";
+
+    QMenu menu(parent);
+    {
+        auto action1 = new QAction("&Clear Text", &menu);
+        QPixmap icon1(":/icons/download.svg");
+        action1->setIcon(icon1);
+        menu.addAction(action1);
+        QObject::connect(action1, &QAction::triggered, this, [] {
+            qDebug() << "action1 triggered";
+        });
+    }
+    {
+        auto action2 = new QAction("&Clear Text", &menu);
+        action2->setIcon(QIcon::fromTheme("edit-clear"));
+        menu.addAction(action2);
+        QObject::connect(action2, &QAction::triggered, this, [] {
+            qDebug() << "action2 triggered";
+        });
+    }
+    menu.exec(parent->mapToGlobal(pos));
 }
 
 void MainWindow::tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {

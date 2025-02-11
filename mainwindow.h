@@ -22,5 +22,7 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void showContextMenu(QWidget *parent, const QPoint &pos);
 };
 #endif // MAINWINDOW_H
