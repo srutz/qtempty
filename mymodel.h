@@ -11,6 +11,10 @@ using std::vector;
 struct Person {
     QString email;
     int age = 33;
+    friend QDebug operator<<(QDebug dbg, const Person &person) {
+        dbg.nospace() << "Person(email: " << person.email << ", age: " << person.age << ")";
+        return dbg.space();
+    }
 };
 
 class MyModel : public QAbstractTableModel
@@ -22,6 +26,7 @@ public:
     void addPerson(Person person) { m_persons.push_back(person); }
     int columnCount(const QModelIndex &parent = QModelIndex()) const override { return 2; }
     int rowCount(const QModelIndex &parent = QModelIndex()) const override { return m_persons.size(); }
+    const Person& getPerson(int index) const { return m_persons.at(index); }
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override {
         if (!index.isValid()) {
@@ -41,6 +46,47 @@ public:
         }
         return returnValue;
     }
+
+    Qt::ItemFlags flags(const QModelIndex &index) const override {
+        auto& person = m_persons.at(index.row());
+        Qt::ItemFlags flags = Qt::ItemIsSelectable;
+        if (person.age > 30) {
+            flags |= Qt::ItemIsEnabled | Qt::ItemIsEditable;
+        }
+        return flags;
+    }
+
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override {
+        if (role != Qt::EditRole) {
+            return false;
+        }
+        auto result = false;
+        auto& person = m_persons.at(index.row());
+        switch(index.column()) {
+        case 0:
+            person.email = value.toString();
+            result = true;
+            break;
+        case 1:
+            auto success = false;
+            auto i = value.toInt(&success);
+            if (success) {
+                person.age = i;
+                result = true;
+            }
+            break;
+        }
+        //qDebug() << "person dump";
+        //for (const auto &person : m_persons) { qDebug() << person.email << ", " << person.age; }
+        if (result) {
+            QList<int> roles;
+            roles << Qt::EditRole;
+            emit dataChanged(index, index, roles);
+        }
+        return result;
+    }
+
+
 signals:
 };
 

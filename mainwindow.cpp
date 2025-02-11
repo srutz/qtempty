@@ -24,15 +24,16 @@ MainWindow::MainWindow(QWidget *parent)
     tableView->setModel(mymodel);
     //tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
-    connect(mymodel, &QAbstractItemModel::dataChanged, this, [this] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
-        qDebug() << "lambda: " << topLeft << ", " << bottomRight;
+    connect(mymodel, &QAbstractItemModel::dataChanged, this, [this,mymodel] (const QModelIndex &topLeft, const QModelIndex &bottomRight) {
+        auto p = mymodel->getPerson(topLeft.row());
+        qDebug() << "lambda: " << topLeft << ", " << bottomRight << ", " << p;
     });
     connect(mymodel, &QAbstractItemModel::dataChanged, this, &MainWindow::tableDataChanged);
     layout->addWidget(tableView);
 }
 
 void MainWindow::tableDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {
-    qDebug() << " slot:" << topLeft << ", " << bottomRight;
+    qDebug() << "  slot:" << topLeft << ", " << bottomRight ;
 }
 
 MainWindow::~MainWindow()
