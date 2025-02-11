@@ -9,15 +9,11 @@
 
 SheetPanel::SheetPanel(QWidget *parent): QWidget(parent) {
     m_destination = nullptr;
-    m_backdrop = new QWidget(this);
+    m_backdrop = new AnimatedWidget(this);
     m_sidepanel = new AnimatedWidget(this);
     resize(0, 0);
 
-    // Set backdrop to transparent black with 30% opacity
-    auto backdropPalette = m_backdrop->palette();
-    backdropPalette.setColor(QPalette::Window, QColor(0, 0, 0, 77)); // 77 is 30% of 255
-    m_backdrop->setAutoFillBackground(true);
-    m_backdrop->setPalette(backdropPalette);
+    m_backdrop->setBackgroundColor(QColor::fromRgbF(0, 0, 0, 0.0));
     m_backdrop->hide();
 
     // Set sidepanel to white background
@@ -84,6 +80,7 @@ void SheetPanel::showSheet(QWidget *destination, QWidget *content) {
     });
     layout();
     m_sidepanel->setPosition(QPoint(m_backdrop->width(), 0));
+    m_backdrop->setBackgroundColor(QColor::fromRgb(0, 0, 0, 0));
     QTimer::singleShot(0, [this]() { layout(); });
 }
 
@@ -94,9 +91,11 @@ void SheetPanel::hideSheet(bool animated) {
             m_backdrop->hide();
             m_sidepanel->hide();
         });
+        m_backdrop->setBackgroundColorA(QColor::fromRgb(0, 0, 0, 0), 500);
     } else {
         m_backdrop->hide();
         m_sidepanel->hide();
+        m_backdrop->setBackgroundColor(QColor::fromRgb(0, 0, 0, 0));
     }
 }
 
@@ -110,6 +109,7 @@ void SheetPanel::layout() {
         const auto panelWidth = 400;
         m_sidepanel->resize(panelWidth, m_backdrop->size().height());
         m_sidepanel->setPositionA(QPoint(m_backdrop->width() - panelWidth, 0));
+        m_backdrop->setBackgroundColorA(QColor::fromRgb(0, 0, 0, 192));
         qDebug() << "layout " << m_backdrop->size() << m_backdrop->pos();
     }
 }

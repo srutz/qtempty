@@ -12,6 +12,7 @@
 #include <QTreeView>
 #include <QMainWindow>
 #include <QResizeEvent>
+#include <QPushButton>
 #include "mymodel.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -64,10 +65,28 @@ MainWindow::MainWindow(QWidget *parent)
     connect(text, &QWidget::customContextMenuRequested, this, [this,text] (const QPoint &pos) {
         this->showContextMenu(text, pos);
     });
+
+    m_sheetContent = new QWidget(this);
+    auto sheetLayout = new QVBoxLayout(m_sheetContent);
+    auto header = new QLabel(this);
+    header->setText(R"(<html>
+        <h2>About QtEmpty</h2>
+        <p>Qt Empty is an example project for qt.
+        The branch features Tablemodels, Popup-Menus
+        and the sliding sidepanel.
+        </p>)");
+    header->setWordWrap(true);
+    sheetLayout->setContentsMargins(9, 0, 13, 0);
+    sheetLayout->addWidget(header);
+    sheetLayout->addStretch();
+    auto sheetButton = new QPushButton("Close", this);
+    connect(sheetButton, &QPushButton::clicked, this, [this] {
+        this->m_sheetPanel->hideSheet(true);
+    });
+    sheetLayout->addWidget(sheetButton, 0, Qt::AlignRight);
 }
 
 void MainWindow::showContextMenu(QWidget *parent, const QPoint &pos) {
-    qDebug() << "context menu requested on text";
     QMenu menu(parent);
     {
         auto action1 = new QAction("&Action 1", &menu);

@@ -9,7 +9,7 @@ class SheetPanel : public QWidget
     Q_OBJECT
 
     QWidget *m_destination;
-    QWidget *m_backdrop;
+    AnimatedWidget *m_backdrop;
     AnimatedWidget *m_sidepanel;
     QWidget *m_buttonBar;
 
