@@ -10,6 +10,7 @@ class AnimatedWidget : public QWidget
     Q_OBJECT
 public:
     Q_PROPERTY(QPoint position READ position WRITE setPosition NOTIFY positionChanged)
+    Q_PROPERTY(QColor backgroundColor READ backgroundColor WRITE setBackgroundColor NOTIFY backgroundColorChanged)
 
     explicit AnimatedWidget(QWidget *parent = nullptr) : QWidget(parent)
     {

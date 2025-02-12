@@ -19,7 +19,7 @@ public:
 
     void showSheet(QWidget *destination, QWidget *content);
     void hideSheet(bool animated);
-    void layout();
+    void layout(bool animated = false);
 
 };
 

@@ -12,7 +12,6 @@ SheetPanel::SheetPanel(QWidget *parent): QWidget(parent) {
     m_backdrop = new AnimatedWidget(this);
     m_sidepanel = new AnimatedWidget(this);
     resize(0, 0);
-
     m_backdrop->setBackgroundColor(QColor::fromRgbF(0, 0, 0, 0.0));
     m_backdrop->hide();
 
@@ -21,21 +20,15 @@ SheetPanel::SheetPanel(QWidget *parent): QWidget(parent) {
     sidepanelPalette.setColor(QPalette::Window, Qt::white);
     m_sidepanel->setAutoFillBackground(true);
     m_sidepanel->setPalette(sidepanelPalette);
-
-    // Layout sidepanel on the right side with width 400 on top of backdrop
-    auto layout = new QHBoxLayout(this);
-    layout->addWidget(m_backdrop);
-    layout->addWidget(m_sidepanel);
-    layout->setStretch(0, 1); // Make backdrop take the remaining space
-    layout->setStretch(1, 0); // Fix sidepanel width
+    auto contentLayout = new QVBoxLayout(m_sidepanel);
+    contentLayout->setContentsMargins(QMargins(0, 0, 0, 9));
     m_sidepanel->hide();
-
-    setLayout(layout);
 
     // buttonsbar
     m_buttonBar = new QWidget(this);
     auto buttonBarLayout = new QHBoxLayout(m_buttonBar);
     buttonBarLayout->addStretch();
+    buttonBarLayout->setContentsMargins(0, 2, 0, 1);
     auto closeButton = new QPushButton(this);
     connect(closeButton, &QPushButton::clicked, this, [this] {
         this->hideSheet(true);
@@ -57,9 +50,8 @@ void SheetPanel::showSheet(QWidget *destination, QWidget *content) {
     while (auto child = m_sidepanel->findChild<QWidget *>()) {
         child->setParent(nullptr);
     }
-    auto contentLayout = new QVBoxLayout(m_sidepanel);
-    contentLayout->setContentsMargins(QMargins(0, 0, 0, 0));
     m_buttonBar->setParent(m_sidepanel);
+    auto contentLayout = dynamic_cast<QVBoxLayout*>(m_sidepanel->layout());
     contentLayout->addWidget(m_buttonBar, 0);
     if (content) {
         content->setParent(m_sidepanel);
@@ -78,10 +70,13 @@ void SheetPanel::showSheet(QWidget *destination, QWidget *content) {
     connect(destination, &QWidget::destroyed, [this] {
         hideSheet(false);
     });
-    layout();
-    m_sidepanel->setPosition(QPoint(m_backdrop->width(), 0));
-    m_backdrop->setBackgroundColor(QColor::fromRgb(0, 0, 0, 0));
-    QTimer::singleShot(0, [this]() { layout(); });
+    //content->setStyleSheet("background-color: pink;");
+    QTimer::singleShot(0, [this]() { layout(); 
+        m_sidepanel->setPosition(QPoint(m_backdrop->width(), 0));
+        layout(true);
+        m_sidepanel->setPosition(QPoint(m_backdrop->width(), 0));
+        m_backdrop->setBackgroundColor(QColor::fromRgb(0, 0, 0, 0));
+    });
 }
 
 void SheetPanel::hideSheet(bool animated) {
@@ -99,7 +94,7 @@ void SheetPanel::hideSheet(bool animated) {
     }
 }
 
-void SheetPanel::layout() {
+void SheetPanel::layout(bool animated) {
     if (m_destination) {
         // resize the backdrop to full size of the destination widget
         m_backdrop->resize(m_destination->size());
@@ -108,8 +103,13 @@ void SheetPanel::layout() {
         // with a width of 400
         const auto panelWidth = 400;
         m_sidepanel->resize(panelWidth, m_backdrop->size().height());
-        m_sidepanel->setPositionA(QPoint(m_backdrop->width() - panelWidth, 0));
-        m_backdrop->setBackgroundColorA(QColor::fromRgb(0, 0, 0, 192));
-        qDebug() << "layout " << m_backdrop->size() << m_backdrop->pos();
+        if (animated) {
+            m_sidepanel->setPositionA(QPoint(m_backdrop->width() - panelWidth, 0));
+            m_backdrop->setBackgroundColorA(QColor::fromRgb(0, 0, 0, 192));
+        } else {
+            m_sidepanel->setPosition(QPoint(m_backdrop->width() - panelWidth, 0));
+            m_backdrop->setBackgroundColor(QColor::fromRgb(0, 0, 0, 192));
+        }
+        //qDebug() << "layout " << m_backdrop->size() << m_backdrop->pos();
     }
 }
