@@ -133,6 +133,98 @@ Qt</li>
 Installationsprogramm</li>
 </ul>
 </div>
+<div id="beispiel-repositories-auf-github" class="slide section level1">
+<h1>1.1 Beispiel Repositories auf GitHub</h1>
+<h2 id="qtsheet">qtsheet</h2>
+<p><a
+href="https://github.com/srutz/qtsheet">https://github.com/srutz/qtsheet</a></p>
+<p>Dieses Repo implementiert Sliding-Sheets so ähnlich wie man es von
+Webseiten kennt. Es ist ein Beispiel für die Verwendung von</p>
+<ol style="list-style-type: decimal">
+<li>Properties mit Q_PROPERTY</li>
+<li>Animationen mit QPropertyAnimation</li>
+<li>Custom Widgets</li>
+<li>Keyboard Handling und manuelles Layouting</li>
+</ol>
+<ul>
+<li>Die Sheets können in eigene Projekte übernommen werden. Dazu muss
+man die Dateien <code>sheet.h</code>, <code>sheet.cpp</code> ins eigene
+Projekt kopieren.</li>
+</ul>
+<p><img src="./images/qtsheet.gif" /></p>
+<h2 id="carousel">Carousel</h2>
+<p><a
+href="https://github.com/srutz/carousel">https://github.com/srutz/carousel</a></p>
+<p>Dieses Projekt ist ein einfacher Imageviewer, welche die Bilder
+jedoch ähnlich einem HTML-Carousel animiert nebeneinander anordnet.</p>
+<ul>
+<li><p>Aus diesem Projekt können insbesondere die Dateien
+<code>animatedwidget.h</code>, <code>animatedwidget.cpp</code>,
+<code>toast.h</code> für eigene Projekte interessant sein.</p></li>
+<li><p><code>toast.h</code> implementiert eine animierte
+Benachrichtungsmessage die für eine konfigurierbare Zeit unten im
+Fenster als Overlay erscheint.</p></li>
+</ul>
+<p><img src="./images/carousel.png" /></p>
+<h2 id="qtwebcall">qtwebcall</h2>
+<p><a
+href="https://github.com/srutz/qtwebcall">https://github.com/srutz/qtwebcall</a></p>
+<p>Dieses Projekt zeigt wie man JSON Aufrufe mittels des
+<code>QNetworkAccessManager</code> implementiert. Dazu werden Signal und
+Slots verwendet.</p>
+<ul>
+<li>Die beiden Dateien <code>jsonfetcher.h</code> und
+<code>jsonfetcher.cpp</code> können in eigenen Projekte als Basis für
+JSON-Aufrufe verwendet werden.</li>
+</ul>
+<p><img src="./images/qtwebcall.png" /></p>
+<h2 id="qtmem0ry">qtmem0ry</h2>
+<p><a
+href="https://github.com/srutz/qtmem0ry">https://github.com/srutz/qtmem0ry</a></p>
+<p>Das populäre Memoryspiel, animiert in Qt. Hier sind die interessanten
+Dateien die man evtl. als Basis in eigene Projekte übernehmen
+könnte:</p>
+<ul>
+<li><p><code>animatedwidget.h</code>, <code>animatedwidget.cpp</code>
+für die Animationen von QWidgets.</p></li>
+<li><p><code>datafetcher.h</code> und <code>datafetcher.cpp</code> für
+das allgemeine Laden von Webresources und allgemeine Webaufrufe. Die
+Aufrufe sind sowohl asynchron als auch synchron implementiert.</p></li>
+</ul>
+<p><img src="./images/memory.png" /></p>
+</div>
+<div id="diskspacetool" class="slide section level1">
+<h1>diskspacetool</h1>
+<p><a
+href="https://github.com/srutz/diskspacetool">https://github.com/srutz/diskspacetool</a></p>
+<p>Ein Projekt welches im Hintergrund Verzeichnisse scanned und deren
+Größen und Dateianzahl rekursiv ermittelt. Die Ergebnisse werden in
+einer Baumstruktur angezeigt.</p>
+<p>Interessant ist ggf. zu sehen wie man so einen Hintergrundprozess mit
+einem <code>QThread</code> implementiert und mittels von Signalen mit
+dem Hauptthread kommuniziert. Außerdem kann der Scan in diesem Beispiel
+auch abgebrochen werden.</p>
+<p>Die Details kann man in der Klasse <code>scanform.cpp</code>
+nachvollziehen, welche die Hintergrundverarbeitung aufsetzt und
+implementiert.</p>
+<p><img src="./images/diskspacetool.png" /></p>
+</div>
+<div id="qtdatabase" class="slide section level1">
+<h1>qtdatabase</h1>
+<p><a
+href="https://github.com/srutz/qtdatabase">https://github.com/srutz/qtdatabase</a></p>
+<p>Dieses Projekt implementiert einen grundlegenden Datenbankbrowser.
+Ein beliebiger Query wird generisch als Paged-View angezeigt.</p>
+<p><img src="./images/qtdatabase.png" /></p>
+</div>
+<div id="svgview" class="slide section level1">
+<h1>svgview</h1>
+<p><a
+href="https://github.com/srutz/svgview">https://github.com/srutz/svgview</a></p>
+<p>Dieses sehr einfache Projekt zeigt die Verwendung von SVG und die
+programmtische Animation von SVG Grafiken mittels C++.</p>
+<p><img src="./images/svgview.png" /></p>
+</div>
 <div id="agenda" class="slide section level1">
 <h1>1.2 Agenda</h1>
 <h2 id="tag-1-qt-grundlagen-und-objektsystem">Tag 1: Qt Grundlagen und
@@ -1025,7 +1117,7 @@ resp. für die wichtigsten Eigenschaften von Objekten wird in Qt durch
 das <code>Q_PROPERTY</code> Makro realisiert.</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="kw">public</span> Person <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span> <span class="op">{</span></span>
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="kw">class</span> Person <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span> <span class="op">{</span></span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
 <span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>    <span class="ex">Q_PROPERTY</span><span class="op">(</span><span class="ex">QString</span> name READ name WRITE setName NOTIFY nameChanged<span class="op">)</span></span>
 <span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>    <span class="ex">Q_PROPERTY</span><span class="op">(</span><span class="dt">int</span> age READ age WRITE setAge NOTIFY ageChanged<span class="op">)</span></span>
@@ -1033,7 +1125,7 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#
 <span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
 <span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>    <span class="ex">QString</span> name<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="va">m_name</span><span class="op">;</span> <span class="op">}</span></span>
 <span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>    <span class="dt">void</span> setName<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span><span class="op">&amp;</span> name<span class="op">)</span> <span class="op">{</span> <span class="va">m_name</span> <span class="op">=</span> name<span class="op">;</span> <span class="ex">emit</span> nameChanged<span class="op">(</span>name<span class="op">);</span> <span class="op">}</span></span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>    <span class="ex">QString</span> age<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="va">m_age</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>    <span class="dt">int</span> age<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="va">m_age</span><span class="op">;</span> <span class="op">}</span></span>
 <span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a>    <span class="dt">void</span> setAge<span class="op">(</span><span class="dt">int</span> age<span class="op">)</span> <span class="op">{</span> <span class="va">m_age</span> <span class="op">=</span> age<span class="op">;</span> <span class="ex">emit</span> ageChanged<span class="op">(</span>age<span class="op">);</span> <span class="op">}</span></span>
 <span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a>    <span class="ex">QDate</span> birthDate<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="va">m_birthDate</span><span class="op">;</span> <span class="op">}</span></span>
 <span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a>    <span class="dt">void</span> setBirthDate<span class="op">(</span><span class="at">const</span> <span class="ex">QDate</span><span class="op">&amp;</span> birthDate<span class="op">)</span> <span class="op">{</span> </span>
@@ -2270,7 +2362,9 @@ ausgewählt werden können</p></li>
 aber nicht bearbeitet werden kann. unterstützt Richtext, Links und
 Bilder</p></li>
 <li><p><code>QWebEngineView</code> - Ein Widget, das Webseiten anzeigt
-und interaktive Webinhalte unterstützt</p></li>
+und interaktive Webinhalte unterstützt <code>QContextMenuEvent</code> -
+Ein Kontextmenü, das angezeigt wird, wenn der Benutzer den Rechtsklick
+ausführt.</p></li>
 </ul>
 </div>
 <div id="qt-grundlagen-widgets-1" class="slide section level1">
@@ -2804,6 +2898,56 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb68-1"><a href="#
 <span id="cb68-16"><a href="#cb68-16" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
 <span id="cb68-17"><a href="#cb68-17" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
+<div id="qt-grundlagen-widgets-19" class="slide section level1">
+<h1>4.6 Qt-Grundlagen / Widgets</h1>
+<h2 id="qcontextmenu">QContextMenu</h2>
+<ul>
+<li><p>Ein Kontextmenü wird in Qt mittels der ContextMenuPolicy
+festgelegt. Einige Widgets haben bereits ein Kontextmenü, z.B.
+QTextEdit, QTableWidget, QTreeWidget, QListView, QTableView,
+QTreeView.</p></li>
+<li><p>Ein eigenes Kontextmenü kann mit
+<code>setContextMenuPolicy(Qt::CustomContextMenu)</code> und dem Signal
+<code>customContextMenuRequested()</code> festgelegt werden.</p></li>
+<li><p>Branch: <code>contextmenu</code></p></li>
+</ul>
+<p><img src="./images/contextmenu.png" /></p>
+</div>
+<div id="qt-grundlagen-widgets-20" class="slide section level1">
+<h1>4.6 Qt-Grundlagen / Widgets</h1>
+<h2 id="qcontextmenu-1">QContextMenu</h2>
+<div class="sourceCode" id="cb69"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>MainWindow<span class="op">::</span>MainWindow<span class="op">(</span><span class="ex">QWidget</span> <span class="op">*</span>parent<span class="op">)</span></span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>    <span class="op">:</span> <span class="ex">QMainWindow</span><span class="op">(</span>parent<span class="op">)</span></span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>    <span class="op">,</span> ui<span class="op">(</span><span class="kw">new</span> Ui<span class="op">::</span>MainWindow<span class="op">)</span></span>
+<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a>    ui<span class="op">-&gt;</span>setupUi<span class="op">(</span><span class="kw">this</span><span class="op">);</span></span>
+<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(</span><span class="kw">this</span><span class="op">-&gt;</span>centralWidget<span class="op">());</span></span>
+<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a>    <span class="kw">auto</span> text <span class="op">=</span> <span class="kw">new</span> <span class="ex">QTextEdit</span><span class="op">(</span><span class="st">&quot;Hello World&quot;</span><span class="op">,</span> <span class="kw">this</span><span class="op">);</span></span>
+<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>text<span class="op">);</span></span>
+<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a>    text<span class="op">-&gt;</span>setContextMenuPolicy<span class="op">(</span><span class="ex">Qt::CustomContextMenu</span><span class="op">);</span></span>
+<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a>    <span class="fu">connect</span><span class="op">(</span>text<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QWidget::customContextMenuRequested</span><span class="op">,</span> <span class="kw">this</span><span class="op">,</span> <span class="op">[</span><span class="kw">this</span><span class="op">,</span>text<span class="op">]</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QPoint</span> <span class="op">&amp;</span>pos<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb69-11"><a href="#cb69-11" tabindex="-1"></a>        <span class="kw">this</span><span class="op">-&gt;</span>showContextMenu<span class="op">(</span>text<span class="op">,</span> pos<span class="op">);</span></span>
+<span id="cb69-12"><a href="#cb69-12" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb69-13"><a href="#cb69-13" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb69-14"><a href="#cb69-14" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="#cb69-15" tabindex="-1"></a><span class="dt">void</span> MainWindow<span class="op">::</span>showContextMenu<span class="op">(</span><span class="ex">QWidget</span> <span class="op">*</span>parent<span class="op">,</span> <span class="at">const</span> <span class="ex">QPoint</span> <span class="op">&amp;</span>pos<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb69-16"><a href="#cb69-16" tabindex="-1"></a>    <span class="ex">QMenu</span> menu<span class="op">(</span>parent<span class="op">);</span></span>
+<span id="cb69-17"><a href="#cb69-17" tabindex="-1"></a>    <span class="kw">auto</span> action1 <span class="op">=</span> <span class="kw">new</span> <span class="ex">QAction</span><span class="op">(</span><span class="st">&quot;&amp;Action 1&quot;</span><span class="op">,</span> <span class="op">&amp;</span>menu<span class="op">);</span></span>
+<span id="cb69-18"><a href="#cb69-18" tabindex="-1"></a>    action1<span class="op">-&gt;</span>setIcon<span class="op">(</span><span class="ex">QIcon::fromTheme</span><span class="op">(</span><span class="st">&quot;audio-card&quot;</span><span class="op">));</span></span>
+<span id="cb69-19"><a href="#cb69-19" tabindex="-1"></a>    menu<span class="op">.</span>addAction<span class="op">(</span>action1<span class="op">);</span></span>
+<span id="cb69-20"><a href="#cb69-20" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>action1<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QAction::triggered</span><span class="op">,</span> <span class="kw">this</span><span class="op">,</span> <span class="op">[]</span> <span class="op">{</span></span>
+<span id="cb69-21"><a href="#cb69-21" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;action1 triggered&quot;</span><span class="op">;</span></span>
+<span id="cb69-22"><a href="#cb69-22" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb69-23"><a href="#cb69-23" tabindex="-1"></a>    <span class="kw">auto</span> action2 <span class="op">=</span> <span class="kw">new</span> <span class="ex">QAction</span><span class="op">(</span><span class="st">&quot;A&amp;ction 2&quot;</span><span class="op">,</span> <span class="op">&amp;</span>menu<span class="op">);</span></span>
+<span id="cb69-24"><a href="#cb69-24" tabindex="-1"></a>    action2<span class="op">-&gt;</span>setIcon<span class="op">(</span><span class="ex">QIcon::fromTheme</span><span class="op">(</span><span class="st">&quot;edit-clear&quot;</span><span class="op">));</span></span>
+<span id="cb69-25"><a href="#cb69-25" tabindex="-1"></a>    menu<span class="op">.</span>addAction<span class="op">(</span>action2<span class="op">);</span></span>
+<span id="cb69-26"><a href="#cb69-26" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>action2<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QAction::triggered</span><span class="op">,</span> <span class="kw">this</span><span class="op">,</span> <span class="op">[</span><span class="kw">this</span><span class="op">]</span> <span class="op">{</span></span>
+<span id="cb69-27"><a href="#cb69-27" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;action2 triggered&quot;</span><span class="op">;</span></span>
+<span id="cb69-28"><a href="#cb69-28" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb69-29"><a href="#cb69-29" tabindex="-1"></a>    menu<span class="op">.</span>exec<span class="op">(</span>parent<span class="op">-&gt;</span>mapToGlobal<span class="op">(</span>pos<span class="op">));</span></span>
+<span id="cb69-30"><a href="#cb69-30" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</div>
 <div
 id="fortgeschrittene-qt-themen-benutzeroberflächen--und-interaktionsdesign"
 class="slide section level1">
@@ -2830,20 +2974,20 @@ mit einer Lambda-Funktion verknüpft werden.</p></li>
 <li><p>Beispiel: QPushButton mit Lambda-Funktion. Branch
 <code>lambdasignals</code></p></li>
 </ul>
-<div class="sourceCode" id="cb69"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span> <span class="ex">QWidget</span> window<span class="op">;</span></span>
-<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Slots&quot;</span><span class="op">);</span> window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">300</span><span class="op">);</span></span>
-<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a></span>
-<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a>    <span class="kw">auto</span> mainLayout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a>    <span class="kw">auto</span> button <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPushButton</span><span class="op">(</span><span class="st">&quot;Button&quot;</span><span class="op">);</span></span>
-<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a>    button<span class="op">-&gt;</span>setSizePolicy<span class="op">(</span><span class="ex">QSizePolicy</span><span class="op">(</span><span class="ex">QSizePolicy::Fixed</span><span class="op">,</span> <span class="ex">QSizePolicy::Fixed</span><span class="op">));</span></span>
-<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a>    mainLayout<span class="op">-&gt;</span>addWidget<span class="op">(</span>button<span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="ex">Qt::AlignHCenter</span><span class="op">);</span></span>
-<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>button<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">[&amp;]()</span> <span class="op">{</span></span>
-<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Button wurde geklickt&quot;</span><span class="op">;</span></span>
-<span id="cb69-11"><a href="#cb69-11" tabindex="-1"></a>    <span class="op">});</span></span>
-<span id="cb69-12"><a href="#cb69-12" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span> <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
-<span id="cb69-13"><a href="#cb69-13" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span> <span class="ex">QWidget</span> window<span class="op">;</span></span>
+<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Slots&quot;</span><span class="op">);</span> window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">300</span><span class="op">);</span></span>
+<span id="cb70-4"><a href="#cb70-4" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="#cb70-5" tabindex="-1"></a>    <span class="kw">auto</span> mainLayout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb70-6"><a href="#cb70-6" tabindex="-1"></a>    <span class="kw">auto</span> button <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPushButton</span><span class="op">(</span><span class="st">&quot;Button&quot;</span><span class="op">);</span></span>
+<span id="cb70-7"><a href="#cb70-7" tabindex="-1"></a>    button<span class="op">-&gt;</span>setSizePolicy<span class="op">(</span><span class="ex">QSizePolicy</span><span class="op">(</span><span class="ex">QSizePolicy::Fixed</span><span class="op">,</span> <span class="ex">QSizePolicy::Fixed</span><span class="op">));</span></span>
+<span id="cb70-8"><a href="#cb70-8" tabindex="-1"></a>    mainLayout<span class="op">-&gt;</span>addWidget<span class="op">(</span>button<span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="ex">Qt::AlignHCenter</span><span class="op">);</span></span>
+<span id="cb70-9"><a href="#cb70-9" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>button<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">[&amp;]()</span> <span class="op">{</span></span>
+<span id="cb70-10"><a href="#cb70-10" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Button wurde geklickt&quot;</span><span class="op">;</span></span>
+<span id="cb70-11"><a href="#cb70-11" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb70-12"><a href="#cb70-12" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span> <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
+<span id="cb70-13"><a href="#cb70-13" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div
 id="fortgeschrittene-qt-themen-benutzeroberflächen--und-interaktionsdesign-1"
@@ -2858,20 +3002,20 @@ Subklassen von QWidget implementiert.</p></li>
 <li><p>Beispiel: QPushButton mit eigener Klasse. Branch
 <code>slotbutton</code></p></li>
 </ul>
-<div class="sourceCode" id="cb70"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="kw">class</span> MyButton <span class="op">:</span> <span class="kw">public</span> <span class="ex">QPushButton</span> <span class="op">{</span></span>
-<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
-<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="#cb70-4" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb70-5"><a href="#cb70-5" tabindex="-1"></a>    MyButton<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>text<span class="op">,</span> <span class="ex">QWidget</span> <span class="op">*</span>parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">:</span> <span class="ex">QPushButton</span><span class="op">(</span>text<span class="op">,</span> parent<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb70-6"><a href="#cb70-6" tabindex="-1"></a>       <span class="ex">QObject::connect</span><span class="op">(</span><span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span>MyButton<span class="op">::</span>onClicked<span class="op">);</span></span>
-<span id="cb70-7"><a href="#cb70-7" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb70-8"><a href="#cb70-8" tabindex="-1"></a></span>
-<span id="cb70-9"><a href="#cb70-9" tabindex="-1"></a><span class="kw">public</span> <span class="ex">slots</span><span class="op">:</span></span>
-<span id="cb70-10"><a href="#cb70-10" tabindex="-1"></a>   <span class="dt">void</span> onClicked<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb70-11"><a href="#cb70-11" tabindex="-1"></a>       <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Button wurde geklickt&quot;</span><span class="op">;</span></span>
-<span id="cb70-12"><a href="#cb70-12" tabindex="-1"></a>   <span class="op">}</span></span>
-<span id="cb70-13"><a href="#cb70-13" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="kw">class</span> MyButton <span class="op">:</span> <span class="kw">public</span> <span class="ex">QPushButton</span> <span class="op">{</span></span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb71-5"><a href="#cb71-5" tabindex="-1"></a>    MyButton<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>text<span class="op">,</span> <span class="ex">QWidget</span> <span class="op">*</span>parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">:</span> <span class="ex">QPushButton</span><span class="op">(</span>text<span class="op">,</span> parent<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb71-6"><a href="#cb71-6" tabindex="-1"></a>       <span class="ex">QObject::connect</span><span class="op">(</span><span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span>MyButton<span class="op">::</span>onClicked<span class="op">);</span></span>
+<span id="cb71-7"><a href="#cb71-7" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb71-8"><a href="#cb71-8" tabindex="-1"></a></span>
+<span id="cb71-9"><a href="#cb71-9" tabindex="-1"></a><span class="kw">public</span> <span class="ex">slots</span><span class="op">:</span></span>
+<span id="cb71-10"><a href="#cb71-10" tabindex="-1"></a>   <span class="dt">void</span> onClicked<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb71-11"><a href="#cb71-11" tabindex="-1"></a>       <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Button wurde geklickt&quot;</span><span class="op">;</span></span>
+<span id="cb71-12"><a href="#cb71-12" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb71-13"><a href="#cb71-13" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 </div>
 <div
 id="fortgeschrittene-qt-themen-benutzeroberflächen--und-interaktionsdesign-2"
@@ -2888,8 +3032,8 @@ Version wird nicht mehr weiterentwickelt.</li>
 <li>Den Systembrowser kann man auch mittels QDesktopServices::openUrl()
 öffnen.</li>
 </ul>
-<div class="sourceCode" id="cb71"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="ex">QDesktopServices::openUrl</span><span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span><span class="st">&quot;https://www.stepanrutz.com&quot;</span><span class="op">));</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="ex">QDesktopServices::openUrl</span><span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span><span class="st">&quot;https://www.stepanrutz.com&quot;</span><span class="op">));</span></span></code></pre></div>
 <p><img src="./images/web1.png" /></p>
 </div>
 <div
@@ -2902,46 +3046,46 @@ Interaktionsdesign</h1>
 <li>Beispiel für die Einbindung einer Webseite in eine Qt-Anwendung.
 Branch <code>webengine</code></li>
 </ul>
-<div class="sourceCode" id="cb72"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb72-2"><a href="#cb72-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
-<span id="cb72-3"><a href="#cb72-3" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(&amp;</span>app<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QApplication::lastWindowClosed</span><span class="op">,</span> <span class="op">[]</span> <span class="op">{</span> <span class="ex">QApplication::quit</span><span class="op">();</span> <span class="op">});</span></span>
-<span id="cb72-4"><a href="#cb72-4" tabindex="-1"></a></span>
-<span id="cb72-5"><a href="#cb72-5" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
-<span id="cb72-6"><a href="#cb72-6" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Webview&quot;</span><span class="op">);</span> window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">950</span><span class="op">,</span> <span class="dv">800</span><span class="op">);</span></span>
-<span id="cb72-7"><a href="#cb72-7" tabindex="-1"></a></span>
-<span id="cb72-8"><a href="#cb72-8" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb72-9"><a href="#cb72-9" tabindex="-1"></a>    <span class="kw">auto</span> webView <span class="op">=</span> <span class="kw">new</span> <span class="ex">QWebEngineView</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb72-10"><a href="#cb72-10" tabindex="-1"></a>    <span class="kw">auto</span> output <span class="op">=</span> <span class="kw">new</span> <span class="ex">QLabel</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb72-11"><a href="#cb72-11" tabindex="-1"></a>    <span class="kw">auto</span> toolbar <span class="op">=</span> <span class="kw">new</span> <span class="ex">QWidget</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb72-12"><a href="#cb72-12" tabindex="-1"></a>    <span class="kw">auto</span> toolbarLayout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QHBoxLayout</span><span class="op">(</span>toolbar<span class="op">);</span></span>
-<span id="cb72-13"><a href="#cb72-13" tabindex="-1"></a>    <span class="kw">auto</span> makebutton <span class="op">=</span> <span class="op">[=]</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>t<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb72-14"><a href="#cb72-14" tabindex="-1"></a>        <span class="kw">auto</span> b <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPushButton</span><span class="op">(</span>t<span class="op">,</span> toolbar<span class="op">);</span></span>
-<span id="cb72-15"><a href="#cb72-15" tabindex="-1"></a>        b<span class="op">-&gt;</span>setSizePolicy<span class="op">(</span><span class="ex">QSizePolicy</span><span class="op">(</span><span class="ex">QSizePolicy::Fixed</span><span class="op">,</span> <span class="ex">QSizePolicy::Fixed</span><span class="op">));</span></span>
-<span id="cb72-16"><a href="#cb72-16" tabindex="-1"></a>        toolbarLayout<span class="op">-&gt;</span>addWidget<span class="op">(</span>b<span class="op">);</span></span>
-<span id="cb72-17"><a href="#cb72-17" tabindex="-1"></a>        <span class="cf">return</span> b<span class="op">;</span></span>
-<span id="cb72-18"><a href="#cb72-18" tabindex="-1"></a>    <span class="op">};</span></span>
-<span id="cb72-19"><a href="#cb72-19" tabindex="-1"></a>    <span class="kw">auto</span> makeurlbutton <span class="op">=</span> <span class="op">[=]</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>t<span class="op">,</span> <span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>url<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb72-20"><a href="#cb72-20" tabindex="-1"></a>        <span class="kw">auto</span> button <span class="op">=</span> makebutton<span class="op">(</span>t<span class="op">);</span></span>
-<span id="cb72-21"><a href="#cb72-21" tabindex="-1"></a>        <span class="ex">QObject::connect</span><span class="op">(</span>button<span class="op">,</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> button<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span> webView<span class="op">-&gt;</span>setUrl<span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span>url<span class="op">));</span> <span class="op">});</span></span>
-<span id="cb72-22"><a href="#cb72-22" tabindex="-1"></a>    <span class="op">};</span></span>
-<span id="cb72-23"><a href="#cb72-23" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;Memory&quot;</span><span class="op">,</span> <span class="st">&quot;https://srutz.github.io/vuememory/&quot;</span><span class="op">);</span></span>
-<span id="cb72-24"><a href="#cb72-24" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;Solitaire&quot;</span><span class="op">,</span> <span class="st">&quot;https://srutz.github.io/vuesolitaire/&quot;</span><span class="op">);</span></span>
-<span id="cb72-25"><a href="#cb72-25" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;GFU&quot;</span><span class="op">,</span> <span class="st">&quot;https://www.gfu.net/seminare.html&quot;</span><span class="op">);</span></span>
-<span id="cb72-26"><a href="#cb72-26" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>makebutton<span class="op">(</span><span class="st">&quot;Say hi from Javascript&quot;</span><span class="op">),</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">&amp;</span>window<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span></span>
-<span id="cb72-27"><a href="#cb72-27" tabindex="-1"></a>        webView<span class="op">-&gt;</span>page<span class="op">()-&gt;</span>runJavaScript<span class="op">(</span><span class="st">&quot;alert(&#39;Hello from Qt&#39;);&quot;</span><span class="op">);</span></span>
-<span id="cb72-28"><a href="#cb72-28" tabindex="-1"></a>    <span class="op">});</span></span>
-<span id="cb72-29"><a href="#cb72-29" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>makebutton<span class="op">(</span><span class="st">&quot;Call JS-Function&quot;</span><span class="op">),</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">&amp;</span>window<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span></span>
-<span id="cb72-30"><a href="#cb72-30" tabindex="-1"></a>        webView<span class="op">-&gt;</span>page<span class="op">()-&gt;</span>runJavaScript<span class="op">(</span><span class="st">&quot;Math.pow(2, 10)&quot;</span><span class="op">,</span> <span class="op">[=]</span> <span class="op">(</span><span class="kw">auto</span> result<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb72-31"><a href="#cb72-31" tabindex="-1"></a>            output<span class="op">-&gt;</span>setText<span class="op">(</span><span class="ex">QString</span><span class="op">(</span><span class="st">&quot;The result is %1&quot;</span><span class="op">).</span>arg<span class="op">(</span>result<span class="op">.</span>toDouble<span class="op">()));</span></span>
-<span id="cb72-32"><a href="#cb72-32" tabindex="-1"></a>            <span class="ex">QTimer::singleShot</span><span class="op">(</span><span class="dv">5000</span><span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span>output<span class="op">-&gt;</span>setText<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span> <span class="op">});</span></span>
-<span id="cb72-33"><a href="#cb72-33" tabindex="-1"></a>        <span class="op">});</span></span>
-<span id="cb72-34"><a href="#cb72-34" tabindex="-1"></a>    <span class="op">});</span></span>
-<span id="cb72-35"><a href="#cb72-35" tabindex="-1"></a>    toolbarLayout<span class="op">-&gt;</span>addStretch<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb72-36"><a href="#cb72-36" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>toolbar<span class="op">);</span> layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>webView<span class="op">,</span> <span class="dv">1</span><span class="op">);</span> layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>output<span class="op">);</span></span>
-<span id="cb72-37"><a href="#cb72-37" tabindex="-1"></a>    <span class="ex">QTimer::singleShot</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span> webView<span class="op">-&gt;</span>setUrl<span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span><span class="st">&quot;https://srutz.github.io/vuesolitaire/&quot;</span><span class="op">));</span> <span class="op">});</span></span>
-<span id="cb72-38"><a href="#cb72-38" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span> <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
-<span id="cb72-39"><a href="#cb72-39" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
+<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(&amp;</span>app<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QApplication::lastWindowClosed</span><span class="op">,</span> <span class="op">[]</span> <span class="op">{</span> <span class="ex">QApplication::quit</span><span class="op">();</span> <span class="op">});</span></span>
+<span id="cb73-4"><a href="#cb73-4" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
+<span id="cb73-6"><a href="#cb73-6" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Webview&quot;</span><span class="op">);</span> window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">950</span><span class="op">,</span> <span class="dv">800</span><span class="op">);</span></span>
+<span id="cb73-7"><a href="#cb73-7" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="#cb73-8" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb73-9"><a href="#cb73-9" tabindex="-1"></a>    <span class="kw">auto</span> webView <span class="op">=</span> <span class="kw">new</span> <span class="ex">QWebEngineView</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb73-10"><a href="#cb73-10" tabindex="-1"></a>    <span class="kw">auto</span> output <span class="op">=</span> <span class="kw">new</span> <span class="ex">QLabel</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb73-11"><a href="#cb73-11" tabindex="-1"></a>    <span class="kw">auto</span> toolbar <span class="op">=</span> <span class="kw">new</span> <span class="ex">QWidget</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb73-12"><a href="#cb73-12" tabindex="-1"></a>    <span class="kw">auto</span> toolbarLayout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QHBoxLayout</span><span class="op">(</span>toolbar<span class="op">);</span></span>
+<span id="cb73-13"><a href="#cb73-13" tabindex="-1"></a>    <span class="kw">auto</span> makebutton <span class="op">=</span> <span class="op">[=]</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>t<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb73-14"><a href="#cb73-14" tabindex="-1"></a>        <span class="kw">auto</span> b <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPushButton</span><span class="op">(</span>t<span class="op">,</span> toolbar<span class="op">);</span></span>
+<span id="cb73-15"><a href="#cb73-15" tabindex="-1"></a>        b<span class="op">-&gt;</span>setSizePolicy<span class="op">(</span><span class="ex">QSizePolicy</span><span class="op">(</span><span class="ex">QSizePolicy::Fixed</span><span class="op">,</span> <span class="ex">QSizePolicy::Fixed</span><span class="op">));</span></span>
+<span id="cb73-16"><a href="#cb73-16" tabindex="-1"></a>        toolbarLayout<span class="op">-&gt;</span>addWidget<span class="op">(</span>b<span class="op">);</span></span>
+<span id="cb73-17"><a href="#cb73-17" tabindex="-1"></a>        <span class="cf">return</span> b<span class="op">;</span></span>
+<span id="cb73-18"><a href="#cb73-18" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb73-19"><a href="#cb73-19" tabindex="-1"></a>    <span class="kw">auto</span> makeurlbutton <span class="op">=</span> <span class="op">[=]</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>t<span class="op">,</span> <span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>url<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb73-20"><a href="#cb73-20" tabindex="-1"></a>        <span class="kw">auto</span> button <span class="op">=</span> makebutton<span class="op">(</span>t<span class="op">);</span></span>
+<span id="cb73-21"><a href="#cb73-21" tabindex="-1"></a>        <span class="ex">QObject::connect</span><span class="op">(</span>button<span class="op">,</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> button<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span> webView<span class="op">-&gt;</span>setUrl<span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span>url<span class="op">));</span> <span class="op">});</span></span>
+<span id="cb73-22"><a href="#cb73-22" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb73-23"><a href="#cb73-23" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;Memory&quot;</span><span class="op">,</span> <span class="st">&quot;https://srutz.github.io/vuememory/&quot;</span><span class="op">);</span></span>
+<span id="cb73-24"><a href="#cb73-24" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;Solitaire&quot;</span><span class="op">,</span> <span class="st">&quot;https://srutz.github.io/vuesolitaire/&quot;</span><span class="op">);</span></span>
+<span id="cb73-25"><a href="#cb73-25" tabindex="-1"></a>    makeurlbutton<span class="op">(</span><span class="st">&quot;GFU&quot;</span><span class="op">,</span> <span class="st">&quot;https://www.gfu.net/seminare.html&quot;</span><span class="op">);</span></span>
+<span id="cb73-26"><a href="#cb73-26" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>makebutton<span class="op">(</span><span class="st">&quot;Say hi from Javascript&quot;</span><span class="op">),</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">&amp;</span>window<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span></span>
+<span id="cb73-27"><a href="#cb73-27" tabindex="-1"></a>        webView<span class="op">-&gt;</span>page<span class="op">()-&gt;</span>runJavaScript<span class="op">(</span><span class="st">&quot;alert(&#39;Hello from Qt&#39;);&quot;</span><span class="op">);</span></span>
+<span id="cb73-28"><a href="#cb73-28" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb73-29"><a href="#cb73-29" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(</span>makebutton<span class="op">(</span><span class="st">&quot;Call JS-Function&quot;</span><span class="op">),</span>  <span class="op">&amp;</span><span class="ex">QPushButton::clicked</span><span class="op">,</span> <span class="op">&amp;</span>window<span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span></span>
+<span id="cb73-30"><a href="#cb73-30" tabindex="-1"></a>        webView<span class="op">-&gt;</span>page<span class="op">()-&gt;</span>runJavaScript<span class="op">(</span><span class="st">&quot;Math.pow(2, 10)&quot;</span><span class="op">,</span> <span class="op">[=]</span> <span class="op">(</span><span class="kw">auto</span> result<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb73-31"><a href="#cb73-31" tabindex="-1"></a>            output<span class="op">-&gt;</span>setText<span class="op">(</span><span class="ex">QString</span><span class="op">(</span><span class="st">&quot;The result is %1&quot;</span><span class="op">).</span>arg<span class="op">(</span>result<span class="op">.</span>toDouble<span class="op">()));</span></span>
+<span id="cb73-32"><a href="#cb73-32" tabindex="-1"></a>            <span class="ex">QTimer::singleShot</span><span class="op">(</span><span class="dv">5000</span><span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span>output<span class="op">-&gt;</span>setText<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span> <span class="op">});</span></span>
+<span id="cb73-33"><a href="#cb73-33" tabindex="-1"></a>        <span class="op">});</span></span>
+<span id="cb73-34"><a href="#cb73-34" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb73-35"><a href="#cb73-35" tabindex="-1"></a>    toolbarLayout<span class="op">-&gt;</span>addStretch<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb73-36"><a href="#cb73-36" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>toolbar<span class="op">);</span> layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>webView<span class="op">,</span> <span class="dv">1</span><span class="op">);</span> layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>output<span class="op">);</span></span>
+<span id="cb73-37"><a href="#cb73-37" tabindex="-1"></a>    <span class="ex">QTimer::singleShot</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="op">[=]()</span> <span class="op">{</span> webView<span class="op">-&gt;</span>setUrl<span class="op">(</span><span class="ex">QUrl</span><span class="op">(</span><span class="st">&quot;https://srutz.github.io/vuesolitaire/&quot;</span><span class="op">));</span> <span class="op">});</span></span>
+<span id="cb73-38"><a href="#cb73-38" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span> <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
+<span id="cb73-39"><a href="#cb73-39" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div
 id="fortgeschrittene-qt-themen-benutzeroberflächen--und-interaktionsdesign-4"
@@ -2964,31 +3108,31 @@ class="slide section level1">
 Interaktionsdesign</h1>
 <h2 id="pdfview-beispiel.-branch-pdfview">PdfView Beispiel. Branch
 <code>pdfview</code></h2>
-<div class="sourceCode" id="cb73"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
-<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(&amp;</span>app<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QApplication::lastWindowClosed</span><span class="op">,</span> <span class="op">[]</span> <span class="op">{</span> <span class="ex">QApplication::quit</span><span class="op">();</span> <span class="op">});</span></span>
-<span id="cb73-4"><a href="#cb73-4" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
-<span id="cb73-5"><a href="#cb73-5" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;PdfViewer Beispiel&quot;</span><span class="op">);</span></span>
-<span id="cb73-6"><a href="#cb73-6" tabindex="-1"></a>    window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">900</span><span class="op">,</span> <span class="dv">600</span><span class="op">);</span></span>
-<span id="cb73-7"><a href="#cb73-7" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb73-8"><a href="#cb73-8" tabindex="-1"></a>    <span class="ex">QString</span> filePath<span class="op">;</span></span>
-<span id="cb73-9"><a href="#cb73-9" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">==</span> <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb73-10"><a href="#cb73-10" tabindex="-1"></a>        filePath <span class="op">=</span> <span class="ex">QString</span><span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb73-11"><a href="#cb73-11" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb73-12"><a href="#cb73-12" tabindex="-1"></a>        <span class="ex">QString</span> documentsPath <span class="op">=</span> <span class="ex">QStandardPaths::writableLocation</span><span class="op">(</span><span class="ex">QStandardPaths::DocumentsLocation</span><span class="op">);</span></span>
-<span id="cb73-13"><a href="#cb73-13" tabindex="-1"></a>        <span class="ex">QDir</span> documentsDir<span class="op">(</span>documentsPath<span class="op">);</span></span>
-<span id="cb73-14"><a href="#cb73-14" tabindex="-1"></a>        filePath <span class="op">=</span> documentsDir<span class="op">.</span>filePath<span class="op">(</span><span class="st">&quot;cv.pdf&quot;</span><span class="op">);</span></span>
-<span id="cb73-15"><a href="#cb73-15" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb73-16"><a href="#cb73-16" tabindex="-1"></a>    <span class="kw">auto</span> viewer <span class="op">=</span> <span class="kw">new</span> QPdfView<span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb73-17"><a href="#cb73-17" tabindex="-1"></a>    <span class="kw">auto</span> <span class="op">*</span>document <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPdfDocument</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb73-18"><a href="#cb73-18" tabindex="-1"></a>    document<span class="op">-&gt;</span>load<span class="op">(</span>filePath<span class="op">);</span></span>
-<span id="cb73-19"><a href="#cb73-19" tabindex="-1"></a>    viewer<span class="op">-&gt;</span>setDocument<span class="op">(</span>document<span class="op">);</span></span>
-<span id="cb73-20"><a href="#cb73-20" tabindex="-1"></a>    layout<span class="op">-&gt;</span>setContentsMargins<span class="op">(</span><span class="ex">QMargins</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">));</span></span>
-<span id="cb73-21"><a href="#cb73-21" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>viewer<span class="op">);</span></span>
-<span id="cb73-22"><a href="#cb73-22" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span></span>
-<span id="cb73-23"><a href="#cb73-23" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
-<span id="cb73-24"><a href="#cb73-24" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb74-2"><a href="#cb74-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
+<span id="cb74-3"><a href="#cb74-3" tabindex="-1"></a>    <span class="ex">QObject::connect</span><span class="op">(&amp;</span>app<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QApplication::lastWindowClosed</span><span class="op">,</span> <span class="op">[]</span> <span class="op">{</span> <span class="ex">QApplication::quit</span><span class="op">();</span> <span class="op">});</span></span>
+<span id="cb74-4"><a href="#cb74-4" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
+<span id="cb74-5"><a href="#cb74-5" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;PdfViewer Beispiel&quot;</span><span class="op">);</span></span>
+<span id="cb74-6"><a href="#cb74-6" tabindex="-1"></a>    window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">900</span><span class="op">,</span> <span class="dv">600</span><span class="op">);</span></span>
+<span id="cb74-7"><a href="#cb74-7" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb74-8"><a href="#cb74-8" tabindex="-1"></a>    <span class="ex">QString</span> filePath<span class="op">;</span></span>
+<span id="cb74-9"><a href="#cb74-9" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">==</span> <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb74-10"><a href="#cb74-10" tabindex="-1"></a>        filePath <span class="op">=</span> <span class="ex">QString</span><span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb74-11"><a href="#cb74-11" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb74-12"><a href="#cb74-12" tabindex="-1"></a>        <span class="ex">QString</span> documentsPath <span class="op">=</span> <span class="ex">QStandardPaths::writableLocation</span><span class="op">(</span><span class="ex">QStandardPaths::DocumentsLocation</span><span class="op">);</span></span>
+<span id="cb74-13"><a href="#cb74-13" tabindex="-1"></a>        <span class="ex">QDir</span> documentsDir<span class="op">(</span>documentsPath<span class="op">);</span></span>
+<span id="cb74-14"><a href="#cb74-14" tabindex="-1"></a>        filePath <span class="op">=</span> documentsDir<span class="op">.</span>filePath<span class="op">(</span><span class="st">&quot;cv.pdf&quot;</span><span class="op">);</span></span>
+<span id="cb74-15"><a href="#cb74-15" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb74-16"><a href="#cb74-16" tabindex="-1"></a>    <span class="kw">auto</span> viewer <span class="op">=</span> <span class="kw">new</span> QPdfView<span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb74-17"><a href="#cb74-17" tabindex="-1"></a>    <span class="kw">auto</span> <span class="op">*</span>document <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPdfDocument</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb74-18"><a href="#cb74-18" tabindex="-1"></a>    document<span class="op">-&gt;</span>load<span class="op">(</span>filePath<span class="op">);</span></span>
+<span id="cb74-19"><a href="#cb74-19" tabindex="-1"></a>    viewer<span class="op">-&gt;</span>setDocument<span class="op">(</span>document<span class="op">);</span></span>
+<span id="cb74-20"><a href="#cb74-20" tabindex="-1"></a>    layout<span class="op">-&gt;</span>setContentsMargins<span class="op">(</span><span class="ex">QMargins</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">));</span></span>
+<span id="cb74-21"><a href="#cb74-21" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>viewer<span class="op">);</span></span>
+<span id="cb74-22"><a href="#cb74-22" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span></span>
+<span id="cb74-23"><a href="#cb74-23" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
+<span id="cb74-24"><a href="#cb74-24" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-verwendung-von-datenbanken-mit-qt"
 class="slide section level1">
@@ -3012,43 +3156,43 @@ Qt</h1>
 <ul>
 <li>Beispiel für SQL, Branch <code>sql</code></li>
 </ul>
-<div class="sourceCode" id="cb74"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb74-2"><a href="#cb74-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
-<span id="cb74-3"><a href="#cb74-3" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
-<span id="cb74-4"><a href="#cb74-4" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Sql Beispiel&quot;</span><span class="op">);</span></span>
-<span id="cb74-5"><a href="#cb74-5" tabindex="-1"></a>    window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">500</span><span class="op">);</span></span>
-<span id="cb74-6"><a href="#cb74-6" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
-<span id="cb74-7"><a href="#cb74-7" tabindex="-1"></a>    <span class="kw">auto</span> output <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPlainTextEdit</span><span class="op">();</span></span>
-<span id="cb74-8"><a href="#cb74-8" tabindex="-1"></a>    output<span class="op">-&gt;</span>setReadOnly<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
-<span id="cb74-9"><a href="#cb74-9" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>output<span class="op">);</span></span>
-<span id="cb74-10"><a href="#cb74-10" tabindex="-1"></a></span>
-<span id="cb74-11"><a href="#cb74-11" tabindex="-1"></a>    <span class="kw">auto</span> db <span class="op">=</span> <span class="ex">QSqlDatabase::addDatabase</span><span class="op">(</span><span class="st">&quot;QPSQL&quot;</span><span class="op">);</span> <span class="co">// QPSQL für PostgreSQL</span></span>
-<span id="cb74-12"><a href="#cb74-12" tabindex="-1"></a>    db<span class="op">.</span>setHostName<span class="op">(</span><span class="st">&quot;localhost&quot;</span><span class="op">);</span></span>
-<span id="cb74-13"><a href="#cb74-13" tabindex="-1"></a>    db<span class="op">.</span>setPort<span class="op">(</span><span class="dv">5432</span><span class="op">);</span> db<span class="op">.</span>setDatabaseName<span class="op">(</span><span class="st">&quot;template1&quot;</span><span class="op">);</span></span>
-<span id="cb74-14"><a href="#cb74-14" tabindex="-1"></a>    db<span class="op">.</span>setUserName<span class="op">(</span><span class="st">&quot;sr&quot;</span><span class="op">);</span> db<span class="op">.</span>setPassword<span class="op">(</span><span class="st">&quot;123&quot;</span><span class="op">);</span></span>
-<span id="cb74-15"><a href="#cb74-15" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb74-16"><a href="#cb74-16" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to connect to the database:&quot;</span> <span class="op">&lt;&lt;</span> db<span class="op">.</span>lastError<span class="op">().</span>text<span class="op">();</span></span>
-<span id="cb74-17"><a href="#cb74-17" tabindex="-1"></a>        <span class="cf">return</span> EXIT_FAILURE<span class="op">;</span></span>
-<span id="cb74-18"><a href="#cb74-18" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb74-19"><a href="#cb74-19" tabindex="-1"></a></span>
-<span id="cb74-20"><a href="#cb74-20" tabindex="-1"></a>    <span class="ex">QString</span> s<span class="op">;</span> <span class="ex">QSqlQuery</span> query<span class="op">;</span></span>
-<span id="cb74-21"><a href="#cb74-21" tabindex="-1"></a>    <span class="ex">QString</span> sql <span class="op">=</span> <span class="st">R&quot;(</span><span class="vs">SELECT table_schema, table_name FROM information_schema.tables order by 1, 2</span><span class="st">)&quot;</span><span class="op">;</span></span>
-<span id="cb74-22"><a href="#cb74-22" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>query<span class="op">.</span>exec<span class="op">(</span>sql<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb74-23"><a href="#cb74-23" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to execute query:&quot;</span> <span class="op">&lt;&lt;</span> query<span class="op">.</span>lastError<span class="op">().</span>text<span class="op">();</span></span>
-<span id="cb74-24"><a href="#cb74-24" tabindex="-1"></a>        <span class="cf">return</span> EXIT_FAILURE<span class="op">;</span></span>
-<span id="cb74-25"><a href="#cb74-25" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb74-26"><a href="#cb74-26" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>query<span class="op">.</span>next<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb74-27"><a href="#cb74-27" tabindex="-1"></a>        <span class="kw">auto</span> tableSchema <span class="op">=</span> query<span class="op">.</span>value<span class="op">(</span><span class="st">&quot;table_schema&quot;</span><span class="op">).</span>toString<span class="op">();</span> <span class="co">//QVariant</span></span>
-<span id="cb74-28"><a href="#cb74-28" tabindex="-1"></a>        <span class="kw">auto</span> tableName <span class="op">=</span> query<span class="op">.</span>value<span class="op">(</span><span class="st">&quot;table_name&quot;</span><span class="op">).</span>toString<span class="op">();</span></span>
-<span id="cb74-29"><a href="#cb74-29" tabindex="-1"></a>        s <span class="op">+=</span> tableSchema <span class="op">+</span> <span class="st">&quot;.&quot;</span> <span class="op">+</span> tableName <span class="op">+</span> <span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">&quot;</span><span class="op">;</span></span>
-<span id="cb74-30"><a href="#cb74-30" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb74-31"><a href="#cb74-31" tabindex="-1"></a>    db<span class="op">.</span>close<span class="op">();</span></span>
-<span id="cb74-32"><a href="#cb74-32" tabindex="-1"></a>    output<span class="op">-&gt;</span>setPlainText<span class="op">(</span>s<span class="op">);</span></span>
-<span id="cb74-33"><a href="#cb74-33" tabindex="-1"></a></span>
-<span id="cb74-34"><a href="#cb74-34" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span></span>
-<span id="cb74-35"><a href="#cb74-35" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
-<span id="cb74-36"><a href="#cb74-36" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>    <span class="ex">QApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
+<span id="cb75-3"><a href="#cb75-3" tabindex="-1"></a>    <span class="ex">QWidget</span> window<span class="op">;</span></span>
+<span id="cb75-4"><a href="#cb75-4" tabindex="-1"></a>    window<span class="op">.</span>setWindowTitle<span class="op">(</span><span class="st">&quot;Sql Beispiel&quot;</span><span class="op">);</span></span>
+<span id="cb75-5"><a href="#cb75-5" tabindex="-1"></a>    window<span class="op">.</span>setGeometry<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">500</span><span class="op">);</span></span>
+<span id="cb75-6"><a href="#cb75-6" tabindex="-1"></a>    <span class="kw">auto</span> layout <span class="op">=</span> <span class="kw">new</span> <span class="ex">QVBoxLayout</span><span class="op">(&amp;</span>window<span class="op">);</span></span>
+<span id="cb75-7"><a href="#cb75-7" tabindex="-1"></a>    <span class="kw">auto</span> output <span class="op">=</span> <span class="kw">new</span> <span class="ex">QPlainTextEdit</span><span class="op">();</span></span>
+<span id="cb75-8"><a href="#cb75-8" tabindex="-1"></a>    output<span class="op">-&gt;</span>setReadOnly<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb75-9"><a href="#cb75-9" tabindex="-1"></a>    layout<span class="op">-&gt;</span>addWidget<span class="op">(</span>output<span class="op">);</span></span>
+<span id="cb75-10"><a href="#cb75-10" tabindex="-1"></a></span>
+<span id="cb75-11"><a href="#cb75-11" tabindex="-1"></a>    <span class="kw">auto</span> db <span class="op">=</span> <span class="ex">QSqlDatabase::addDatabase</span><span class="op">(</span><span class="st">&quot;QPSQL&quot;</span><span class="op">);</span> <span class="co">// QPSQL für PostgreSQL</span></span>
+<span id="cb75-12"><a href="#cb75-12" tabindex="-1"></a>    db<span class="op">.</span>setHostName<span class="op">(</span><span class="st">&quot;localhost&quot;</span><span class="op">);</span></span>
+<span id="cb75-13"><a href="#cb75-13" tabindex="-1"></a>    db<span class="op">.</span>setPort<span class="op">(</span><span class="dv">5432</span><span class="op">);</span> db<span class="op">.</span>setDatabaseName<span class="op">(</span><span class="st">&quot;template1&quot;</span><span class="op">);</span></span>
+<span id="cb75-14"><a href="#cb75-14" tabindex="-1"></a>    db<span class="op">.</span>setUserName<span class="op">(</span><span class="st">&quot;sr&quot;</span><span class="op">);</span> db<span class="op">.</span>setPassword<span class="op">(</span><span class="st">&quot;123&quot;</span><span class="op">);</span></span>
+<span id="cb75-15"><a href="#cb75-15" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>db<span class="op">.</span>open<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb75-16"><a href="#cb75-16" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to connect to the database:&quot;</span> <span class="op">&lt;&lt;</span> db<span class="op">.</span>lastError<span class="op">().</span>text<span class="op">();</span></span>
+<span id="cb75-17"><a href="#cb75-17" tabindex="-1"></a>        <span class="cf">return</span> EXIT_FAILURE<span class="op">;</span></span>
+<span id="cb75-18"><a href="#cb75-18" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb75-19"><a href="#cb75-19" tabindex="-1"></a></span>
+<span id="cb75-20"><a href="#cb75-20" tabindex="-1"></a>    <span class="ex">QString</span> s<span class="op">;</span> <span class="ex">QSqlQuery</span> query<span class="op">;</span></span>
+<span id="cb75-21"><a href="#cb75-21" tabindex="-1"></a>    <span class="ex">QString</span> sql <span class="op">=</span> <span class="st">R&quot;(</span><span class="vs">SELECT table_schema, table_name FROM information_schema.tables order by 1, 2</span><span class="st">)&quot;</span><span class="op">;</span></span>
+<span id="cb75-22"><a href="#cb75-22" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>query<span class="op">.</span>exec<span class="op">(</span>sql<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb75-23"><a href="#cb75-23" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to execute query:&quot;</span> <span class="op">&lt;&lt;</span> query<span class="op">.</span>lastError<span class="op">().</span>text<span class="op">();</span></span>
+<span id="cb75-24"><a href="#cb75-24" tabindex="-1"></a>        <span class="cf">return</span> EXIT_FAILURE<span class="op">;</span></span>
+<span id="cb75-25"><a href="#cb75-25" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb75-26"><a href="#cb75-26" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>query<span class="op">.</span>next<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb75-27"><a href="#cb75-27" tabindex="-1"></a>        <span class="kw">auto</span> tableSchema <span class="op">=</span> query<span class="op">.</span>value<span class="op">(</span><span class="st">&quot;table_schema&quot;</span><span class="op">).</span>toString<span class="op">();</span> <span class="co">//QVariant</span></span>
+<span id="cb75-28"><a href="#cb75-28" tabindex="-1"></a>        <span class="kw">auto</span> tableName <span class="op">=</span> query<span class="op">.</span>value<span class="op">(</span><span class="st">&quot;table_name&quot;</span><span class="op">).</span>toString<span class="op">();</span></span>
+<span id="cb75-29"><a href="#cb75-29" tabindex="-1"></a>        s <span class="op">+=</span> tableSchema <span class="op">+</span> <span class="st">&quot;.&quot;</span> <span class="op">+</span> tableName <span class="op">+</span> <span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">&quot;</span><span class="op">;</span></span>
+<span id="cb75-30"><a href="#cb75-30" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb75-31"><a href="#cb75-31" tabindex="-1"></a>    db<span class="op">.</span>close<span class="op">();</span></span>
+<span id="cb75-32"><a href="#cb75-32" tabindex="-1"></a>    output<span class="op">-&gt;</span>setPlainText<span class="op">(</span>s<span class="op">);</span></span>
+<span id="cb75-33"><a href="#cb75-33" tabindex="-1"></a></span>
+<span id="cb75-34"><a href="#cb75-34" tabindex="-1"></a>    window<span class="op">.</span>show<span class="op">();</span></span>
+<span id="cb75-35"><a href="#cb75-35" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
+<span id="cb75-36"><a href="#cb75-36" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-verbindungen-zu-externen-apis"
 class="slide section level1">
@@ -3079,150 +3223,150 @@ class="slide section level1">
 <h1>5.3 Fortgeschrittene Qt-Themen / Verbindungen zu externen APIs</h1>
 <h2 id="beispiel-http-client-mit-qnetworkaccessmanager">Beispiel HTTP
 Client mit QNetworkAccessManager</h2>
-<div class="sourceCode" id="cb75"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a><span class="kw">class</span> HttpClient <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span> <span class="op">{</span></span>
-<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
-<span id="cb75-3"><a href="#cb75-3" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb75-4"><a href="#cb75-4" tabindex="-1"></a>    <span class="ex">QNetworkAccessManager</span><span class="op">*</span> <span class="va">m_manager</span><span class="op">;</span></span>
-<span id="cb75-5"><a href="#cb75-5" tabindex="-1"></a>    </span>
-<span id="cb75-6"><a href="#cb75-6" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb75-7"><a href="#cb75-7" tabindex="-1"></a>    <span class="kw">explicit</span> HttpClient<span class="op">(</span><span class="ex">QObject</span><span class="op">*</span> parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">:</span> <span class="ex">QObject</span><span class="op">(</span>parent<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb75-8"><a href="#cb75-8" tabindex="-1"></a>        <span class="va">m_manager</span> <span class="op">=</span> <span class="kw">new</span> <span class="ex">QNetworkAccessManager</span><span class="op">(</span><span class="kw">this</span><span class="op">);</span></span>
-<span id="cb75-9"><a href="#cb75-9" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb75-10"><a href="#cb75-10" tabindex="-1"></a>    </span>
-<span id="cb75-11"><a href="#cb75-11" tabindex="-1"></a>    <span class="dt">void</span> get<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span><span class="op">&amp;</span> url<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb75-12"><a href="#cb75-12" tabindex="-1"></a>        <span class="ex">QNetworkRequest</span> request<span class="op">(</span>url<span class="op">);</span></span>
-<span id="cb75-13"><a href="#cb75-13" tabindex="-1"></a>        request<span class="op">.</span>setHeader<span class="op">(</span><span class="ex">QNetworkRequest::UserAgentHeader</span><span class="op">,</span> <span class="st">&quot;MyApp/1.0&quot;</span><span class="op">);</span></span>
-<span id="cb75-14"><a href="#cb75-14" tabindex="-1"></a>        <span class="ex">QNetworkReply</span><span class="op">*</span> reply <span class="op">=</span> <span class="va">m_manager</span><span class="op">-&gt;</span>get<span class="op">(</span>request<span class="op">);</span></span>
-<span id="cb75-15"><a href="#cb75-15" tabindex="-1"></a>        <span class="fu">connect</span><span class="op">(</span>reply<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QNetworkReply::finished</span><span class="op">,</span></span>
-<span id="cb75-16"><a href="#cb75-16" tabindex="-1"></a>                <span class="kw">this</span><span class="op">,</span> <span class="op">[</span><span class="kw">this</span><span class="op">,</span> reply<span class="op">]()</span> <span class="op">{</span></span>
-<span id="cb75-17"><a href="#cb75-17" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>reply<span class="op">-&gt;</span>error<span class="op">()</span> <span class="op">==</span> <span class="ex">QNetworkReply::NoError</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb75-18"><a href="#cb75-18" tabindex="-1"></a>                <span class="ex">emit</span> dataReceived<span class="op">(</span>reply<span class="op">-&gt;</span>readAll<span class="op">());</span></span>
-<span id="cb75-19"><a href="#cb75-19" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb75-20"><a href="#cb75-20" tabindex="-1"></a>                <span class="ex">emit</span> errorOccurred<span class="op">(</span>reply<span class="op">-&gt;</span>errorString<span class="op">());</span></span>
-<span id="cb75-21"><a href="#cb75-21" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb75-22"><a href="#cb75-22" tabindex="-1"></a>            reply<span class="op">-&gt;</span>deleteLater<span class="op">();</span></span>
-<span id="cb75-23"><a href="#cb75-23" tabindex="-1"></a>        <span class="op">});</span></span>
-<span id="cb75-24"><a href="#cb75-24" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb75-25"><a href="#cb75-25" tabindex="-1"></a><span class="ex">signals</span><span class="op">:</span></span>
-<span id="cb75-26"><a href="#cb75-26" tabindex="-1"></a>    <span class="dt">void</span> dataReceived<span class="op">(</span><span class="at">const</span> <span class="ex">QByteArray</span><span class="op">&amp;</span> data<span class="op">);</span></span>
-<span id="cb75-27"><a href="#cb75-27" tabindex="-1"></a>    <span class="dt">void</span> errorOccurred<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span><span class="op">&amp;</span> error<span class="op">);</span></span>
-<span id="cb75-28"><a href="#cb75-28" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a><span class="kw">class</span> HttpClient <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span> <span class="op">{</span></span>
+<span id="cb76-2"><a href="#cb76-2" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
+<span id="cb76-3"><a href="#cb76-3" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb76-4"><a href="#cb76-4" tabindex="-1"></a>    <span class="ex">QNetworkAccessManager</span><span class="op">*</span> <span class="va">m_manager</span><span class="op">;</span></span>
+<span id="cb76-5"><a href="#cb76-5" tabindex="-1"></a>    </span>
+<span id="cb76-6"><a href="#cb76-6" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb76-7"><a href="#cb76-7" tabindex="-1"></a>    <span class="kw">explicit</span> HttpClient<span class="op">(</span><span class="ex">QObject</span><span class="op">*</span> parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">:</span> <span class="ex">QObject</span><span class="op">(</span>parent<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb76-8"><a href="#cb76-8" tabindex="-1"></a>        <span class="va">m_manager</span> <span class="op">=</span> <span class="kw">new</span> <span class="ex">QNetworkAccessManager</span><span class="op">(</span><span class="kw">this</span><span class="op">);</span></span>
+<span id="cb76-9"><a href="#cb76-9" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb76-10"><a href="#cb76-10" tabindex="-1"></a>    </span>
+<span id="cb76-11"><a href="#cb76-11" tabindex="-1"></a>    <span class="dt">void</span> get<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span><span class="op">&amp;</span> url<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb76-12"><a href="#cb76-12" tabindex="-1"></a>        <span class="ex">QNetworkRequest</span> request<span class="op">(</span>url<span class="op">);</span></span>
+<span id="cb76-13"><a href="#cb76-13" tabindex="-1"></a>        request<span class="op">.</span>setHeader<span class="op">(</span><span class="ex">QNetworkRequest::UserAgentHeader</span><span class="op">,</span> <span class="st">&quot;MyApp/1.0&quot;</span><span class="op">);</span></span>
+<span id="cb76-14"><a href="#cb76-14" tabindex="-1"></a>        <span class="ex">QNetworkReply</span><span class="op">*</span> reply <span class="op">=</span> <span class="va">m_manager</span><span class="op">-&gt;</span>get<span class="op">(</span>request<span class="op">);</span></span>
+<span id="cb76-15"><a href="#cb76-15" tabindex="-1"></a>        <span class="fu">connect</span><span class="op">(</span>reply<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QNetworkReply::finished</span><span class="op">,</span></span>
+<span id="cb76-16"><a href="#cb76-16" tabindex="-1"></a>                <span class="kw">this</span><span class="op">,</span> <span class="op">[</span><span class="kw">this</span><span class="op">,</span> reply<span class="op">]()</span> <span class="op">{</span></span>
+<span id="cb76-17"><a href="#cb76-17" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>reply<span class="op">-&gt;</span>error<span class="op">()</span> <span class="op">==</span> <span class="ex">QNetworkReply::NoError</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb76-18"><a href="#cb76-18" tabindex="-1"></a>                <span class="ex">emit</span> dataReceived<span class="op">(</span>reply<span class="op">-&gt;</span>readAll<span class="op">());</span></span>
+<span id="cb76-19"><a href="#cb76-19" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb76-20"><a href="#cb76-20" tabindex="-1"></a>                <span class="ex">emit</span> errorOccurred<span class="op">(</span>reply<span class="op">-&gt;</span>errorString<span class="op">());</span></span>
+<span id="cb76-21"><a href="#cb76-21" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb76-22"><a href="#cb76-22" tabindex="-1"></a>            reply<span class="op">-&gt;</span>deleteLater<span class="op">();</span></span>
+<span id="cb76-23"><a href="#cb76-23" tabindex="-1"></a>        <span class="op">});</span></span>
+<span id="cb76-24"><a href="#cb76-24" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb76-25"><a href="#cb76-25" tabindex="-1"></a><span class="ex">signals</span><span class="op">:</span></span>
+<span id="cb76-26"><a href="#cb76-26" tabindex="-1"></a>    <span class="dt">void</span> dataReceived<span class="op">(</span><span class="at">const</span> <span class="ex">QByteArray</span><span class="op">&amp;</span> data<span class="op">);</span></span>
+<span id="cb76-27"><a href="#cb76-27" tabindex="-1"></a>    <span class="dt">void</span> errorOccurred<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span><span class="op">&amp;</span> error<span class="op">);</span></span>
+<span id="cb76-28"><a href="#cb76-28" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-verbindungen-zu-externen-apis-2"
 class="slide section level1">
 <h1>5.3 Fortgeschrittene Qt-Themen / Verbindungen zu externen APIs</h1>
 <h2 id="beispiel-mit-für-einen-generischen-json-client">Beispiel mit für
 einen generischen JSON Client</h2>
-<div class="sourceCode" id="cb76"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a><span class="co">/* jsonfetcher.h Generic JSON Fetcher */</span></span>
-<span id="cb76-2"><a href="#cb76-2" tabindex="-1"></a><span class="kw">class</span> JsonFetcher <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span></span>
-<span id="cb76-3"><a href="#cb76-3" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb76-4"><a href="#cb76-4" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
-<span id="cb76-5"><a href="#cb76-5" tabindex="-1"></a>    <span class="kw">struct</span> FetchOptions <span class="op">{</span></span>
-<span id="cb76-6"><a href="#cb76-6" tabindex="-1"></a>        <span class="ex">QString</span> url<span class="op">;</span></span>
-<span id="cb76-7"><a href="#cb76-7" tabindex="-1"></a>        <span class="bu">std::</span>optional<span class="op">&lt;</span><span class="ex">QString</span><span class="op">&gt;</span> httpMethod<span class="op">;</span> <span class="co">// POST, GET, DELETE, PUT etc</span></span>
-<span id="cb76-8"><a href="#cb76-8" tabindex="-1"></a>        <span class="bu">std::</span>optional<span class="op">&lt;</span><span class="ex">QByteArray</span><span class="op">&gt;</span> data<span class="op">;</span> <span class="co">// POST / PUT upload-data</span></span>
-<span id="cb76-9"><a href="#cb76-9" tabindex="-1"></a>    <span class="op">};</span></span>
-<span id="cb76-10"><a href="#cb76-10" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb76-11"><a href="#cb76-11" tabindex="-1"></a>    <span class="kw">explicit</span> JsonFetcher<span class="op">(</span><span class="ex">QObject</span> <span class="op">*</span>parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">);</span></span>
-<span id="cb76-12"><a href="#cb76-12" tabindex="-1"></a>    <span class="dt">void</span> fetch<span class="op">(</span><span class="at">const</span> FetchOptions <span class="op">&amp;</span>options<span class="op">);</span></span>
-<span id="cb76-13"><a href="#cb76-13" tabindex="-1"></a><span class="ex">signals</span><span class="op">:</span></span>
-<span id="cb76-14"><a href="#cb76-14" tabindex="-1"></a>    <span class="dt">void</span> responseReceived<span class="op">(</span><span class="at">const</span> <span class="ex">QJsonDocument</span> <span class="op">&amp;</span>document<span class="op">);</span></span>
-<span id="cb76-15"><a href="#cb76-15" tabindex="-1"></a>    <span class="dt">void</span> error<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>message<span class="op">);</span></span>
-<span id="cb76-16"><a href="#cb76-16" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span><span class="op">:</span></span>
-<span id="cb76-17"><a href="#cb76-17" tabindex="-1"></a>    <span class="dt">void</span> handleNetworkResponse<span class="op">(</span><span class="ex">QNetworkReply</span> <span class="op">*</span>reply<span class="op">);</span></span>
-<span id="cb76-18"><a href="#cb76-18" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb76-19"><a href="#cb76-19" tabindex="-1"></a>    <span class="ex">QNetworkAccessManager</span> <span class="op">*</span>manager<span class="op">;</span></span>
-<span id="cb76-20"><a href="#cb76-20" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="co">/* jsonfetcher.h Generic JSON Fetcher */</span></span>
+<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a><span class="kw">class</span> JsonFetcher <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span></span>
+<span id="cb77-3"><a href="#cb77-3" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb77-4"><a href="#cb77-4" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
+<span id="cb77-5"><a href="#cb77-5" tabindex="-1"></a>    <span class="kw">struct</span> FetchOptions <span class="op">{</span></span>
+<span id="cb77-6"><a href="#cb77-6" tabindex="-1"></a>        <span class="ex">QString</span> url<span class="op">;</span></span>
+<span id="cb77-7"><a href="#cb77-7" tabindex="-1"></a>        <span class="bu">std::</span>optional<span class="op">&lt;</span><span class="ex">QString</span><span class="op">&gt;</span> httpMethod<span class="op">;</span> <span class="co">// POST, GET, DELETE, PUT etc</span></span>
+<span id="cb77-8"><a href="#cb77-8" tabindex="-1"></a>        <span class="bu">std::</span>optional<span class="op">&lt;</span><span class="ex">QByteArray</span><span class="op">&gt;</span> data<span class="op">;</span> <span class="co">// POST / PUT upload-data</span></span>
+<span id="cb77-9"><a href="#cb77-9" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb77-10"><a href="#cb77-10" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb77-11"><a href="#cb77-11" tabindex="-1"></a>    <span class="kw">explicit</span> JsonFetcher<span class="op">(</span><span class="ex">QObject</span> <span class="op">*</span>parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">);</span></span>
+<span id="cb77-12"><a href="#cb77-12" tabindex="-1"></a>    <span class="dt">void</span> fetch<span class="op">(</span><span class="at">const</span> FetchOptions <span class="op">&amp;</span>options<span class="op">);</span></span>
+<span id="cb77-13"><a href="#cb77-13" tabindex="-1"></a><span class="ex">signals</span><span class="op">:</span></span>
+<span id="cb77-14"><a href="#cb77-14" tabindex="-1"></a>    <span class="dt">void</span> responseReceived<span class="op">(</span><span class="at">const</span> <span class="ex">QJsonDocument</span> <span class="op">&amp;</span>document<span class="op">);</span></span>
+<span id="cb77-15"><a href="#cb77-15" tabindex="-1"></a>    <span class="dt">void</span> error<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>message<span class="op">);</span></span>
+<span id="cb77-16"><a href="#cb77-16" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span><span class="op">:</span></span>
+<span id="cb77-17"><a href="#cb77-17" tabindex="-1"></a>    <span class="dt">void</span> handleNetworkResponse<span class="op">(</span><span class="ex">QNetworkReply</span> <span class="op">*</span>reply<span class="op">);</span></span>
+<span id="cb77-18"><a href="#cb77-18" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb77-19"><a href="#cb77-19" tabindex="-1"></a>    <span class="ex">QNetworkAccessManager</span> <span class="op">*</span>manager<span class="op">;</span></span>
+<span id="cb77-20"><a href="#cb77-20" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-verbindungen-zu-externen-apis-3"
 class="slide section level1">
 <h1>5.3 Fortgeschrittene Qt-Themen / Verbindungen zu externen APIs</h1>
 <h2 id="beispiel-mit-für-einen-generischen-json-client-1">Beispiel mit
 für einen generischen JSON Client</h2>
-<div class="sourceCode" id="cb77"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="co">// jsonfetcher.cpp</span></span>
-<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>JsonFetcher<span class="op">::</span>JsonFetcher<span class="op">(</span><span class="ex">QObject</span> <span class="op">*</span>parent<span class="op">)</span></span>
-<span id="cb77-3"><a href="#cb77-3" tabindex="-1"></a>    <span class="op">:</span> <span class="ex">QObject</span><span class="op">(</span>parent<span class="op">)</span></span>
-<span id="cb77-4"><a href="#cb77-4" tabindex="-1"></a>    <span class="op">,</span> manager<span class="op">(</span><span class="kw">new</span> <span class="ex">QNetworkAccessManager</span><span class="op">(</span><span class="kw">this</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb77-5"><a href="#cb77-5" tabindex="-1"></a>    <span class="fu">connect</span><span class="op">(</span>manager<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QNetworkAccessManager::finished</span><span class="op">,</span> </span>
-<span id="cb77-6"><a href="#cb77-6" tabindex="-1"></a>        <span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span>JsonFetcher<span class="op">::</span>handleNetworkResponse<span class="op">);</span></span>
-<span id="cb77-7"><a href="#cb77-7" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb77-8"><a href="#cb77-8" tabindex="-1"></a></span>
-<span id="cb77-9"><a href="#cb77-9" tabindex="-1"></a><span class="dt">void</span> JsonFetcher<span class="op">::</span>fetch<span class="op">(</span><span class="at">const</span> FetchOptions <span class="op">&amp;</span>options<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb77-10"><a href="#cb77-10" tabindex="-1"></a>    <span class="ex">QUrl</span> url<span class="op">(</span>options<span class="op">.</span>url<span class="op">);</span></span>
-<span id="cb77-11"><a href="#cb77-11" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>url<span class="op">.</span>isValid<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb77-12"><a href="#cb77-12" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span><span class="st">&quot;Invalid URL&quot;</span><span class="op">);</span></span>
-<span id="cb77-13"><a href="#cb77-13" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb77-14"><a href="#cb77-14" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb77-15"><a href="#cb77-15" tabindex="-1"></a>    <span class="ex">QNetworkRequest</span> request<span class="op">(</span>url<span class="op">);</span></span>
-<span id="cb77-16"><a href="#cb77-16" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Fetching URL:&quot;</span> <span class="op">&lt;&lt;</span> url<span class="op">.</span>toString<span class="op">();</span></span>
-<span id="cb77-17"><a href="#cb77-17" tabindex="-1"></a>    request<span class="op">.</span>setRawHeader<span class="op">(</span><span class="st">&quot;Accept&quot;</span><span class="op">,</span> <span class="st">&quot;application/json&quot;</span><span class="op">);</span></span>
-<span id="cb77-18"><a href="#cb77-18" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>options<span class="op">.</span>httpMethod<span class="op">.</span>value_or<span class="op">(</span><span class="st">&quot;GET&quot;</span><span class="op">)</span> <span class="op">==</span> <span class="st">&quot;POST&quot;</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb77-19"><a href="#cb77-19" tabindex="-1"></a>        request<span class="op">.</span>setHeader<span class="op">(</span><span class="ex">QNetworkRequest::ContentTypeHeader</span><span class="op">,</span> <span class="st">&quot;application/json&quot;</span><span class="op">);</span></span>
-<span id="cb77-20"><a href="#cb77-20" tabindex="-1"></a>        manager<span class="op">-&gt;</span>post<span class="op">(</span>request<span class="op">,</span> options<span class="op">.</span>data<span class="op">.</span>value_or<span class="op">(</span><span class="ex">QByteArray</span><span class="op">()));</span></span>
-<span id="cb77-21"><a href="#cb77-21" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb77-22"><a href="#cb77-22" tabindex="-1"></a>        manager<span class="op">-&gt;</span>get<span class="op">(</span>request<span class="op">);</span></span>
-<span id="cb77-23"><a href="#cb77-23" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb77-24"><a href="#cb77-24" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb77-25"><a href="#cb77-25" tabindex="-1"></a></span>
-<span id="cb77-26"><a href="#cb77-26" tabindex="-1"></a><span class="dt">void</span> JsonFetcher<span class="op">::</span>handleNetworkResponse<span class="op">(</span><span class="ex">QNetworkReply</span> <span class="op">*</span>reply<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb77-27"><a href="#cb77-27" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;network request finished 2&quot;</span><span class="op">;</span></span>
-<span id="cb77-28"><a href="#cb77-28" tabindex="-1"></a>    <span class="co">/* make sure reply is deleted under all circumstances */</span></span>
-<span id="cb77-29"><a href="#cb77-29" tabindex="-1"></a>    RAIIGuard guard<span class="op">([</span>reply<span class="op">]</span> <span class="op">{</span> reply<span class="op">-&gt;</span>deleteLater<span class="op">();</span> <span class="op">});</span></span>
-<span id="cb77-30"><a href="#cb77-30" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;handle json response&quot;</span><span class="op">;</span></span>
-<span id="cb77-31"><a href="#cb77-31" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>reply<span class="op">-&gt;</span>error<span class="op">()</span> <span class="op">!=</span> <span class="ex">QNetworkReply::NoError</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb77-32"><a href="#cb77-32" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span>reply<span class="op">-&gt;</span>errorString<span class="op">());</span></span>
-<span id="cb77-33"><a href="#cb77-33" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb77-34"><a href="#cb77-34" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb77-35"><a href="#cb77-35" tabindex="-1"></a>    <span class="kw">auto</span> data <span class="op">=</span> reply<span class="op">-&gt;</span>readAll<span class="op">();</span></span>
-<span id="cb77-36"><a href="#cb77-36" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;got data&quot;</span> <span class="op">&lt;&lt;</span> data<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;bytes&quot;</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;: utf8=&quot;</span> <span class="op">&lt;&lt;</span> <span class="ex">QString::fromUtf8</span><span class="op">(</span>data<span class="op">);</span></span>
-<span id="cb77-37"><a href="#cb77-37" tabindex="-1"></a>    <span class="kw">auto</span> doc <span class="op">=</span> <span class="ex">QJsonDocument::fromJson</span><span class="op">(</span>data<span class="op">);</span></span>
-<span id="cb77-38"><a href="#cb77-38" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>doc<span class="op">.</span>isNull<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb77-39"><a href="#cb77-39" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span><span class="st">&quot;Failed to parse JSON&quot;</span><span class="op">);</span></span>
-<span id="cb77-40"><a href="#cb77-40" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb77-41"><a href="#cb77-41" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb77-42"><a href="#cb77-42" tabindex="-1"></a>    <span class="ex">emit</span> responseReceived<span class="op">(</span>doc<span class="op">);</span></span>
-<span id="cb77-43"><a href="#cb77-43" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="co">// jsonfetcher.cpp</span></span>
+<span id="cb78-2"><a href="#cb78-2" tabindex="-1"></a>JsonFetcher<span class="op">::</span>JsonFetcher<span class="op">(</span><span class="ex">QObject</span> <span class="op">*</span>parent<span class="op">)</span></span>
+<span id="cb78-3"><a href="#cb78-3" tabindex="-1"></a>    <span class="op">:</span> <span class="ex">QObject</span><span class="op">(</span>parent<span class="op">)</span></span>
+<span id="cb78-4"><a href="#cb78-4" tabindex="-1"></a>    <span class="op">,</span> manager<span class="op">(</span><span class="kw">new</span> <span class="ex">QNetworkAccessManager</span><span class="op">(</span><span class="kw">this</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb78-5"><a href="#cb78-5" tabindex="-1"></a>    <span class="fu">connect</span><span class="op">(</span>manager<span class="op">,</span> <span class="op">&amp;</span><span class="ex">QNetworkAccessManager::finished</span><span class="op">,</span> </span>
+<span id="cb78-6"><a href="#cb78-6" tabindex="-1"></a>        <span class="kw">this</span><span class="op">,</span> <span class="op">&amp;</span>JsonFetcher<span class="op">::</span>handleNetworkResponse<span class="op">);</span></span>
+<span id="cb78-7"><a href="#cb78-7" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb78-8"><a href="#cb78-8" tabindex="-1"></a></span>
+<span id="cb78-9"><a href="#cb78-9" tabindex="-1"></a><span class="dt">void</span> JsonFetcher<span class="op">::</span>fetch<span class="op">(</span><span class="at">const</span> FetchOptions <span class="op">&amp;</span>options<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb78-10"><a href="#cb78-10" tabindex="-1"></a>    <span class="ex">QUrl</span> url<span class="op">(</span>options<span class="op">.</span>url<span class="op">);</span></span>
+<span id="cb78-11"><a href="#cb78-11" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>url<span class="op">.</span>isValid<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb78-12"><a href="#cb78-12" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span><span class="st">&quot;Invalid URL&quot;</span><span class="op">);</span></span>
+<span id="cb78-13"><a href="#cb78-13" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb78-14"><a href="#cb78-14" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb78-15"><a href="#cb78-15" tabindex="-1"></a>    <span class="ex">QNetworkRequest</span> request<span class="op">(</span>url<span class="op">);</span></span>
+<span id="cb78-16"><a href="#cb78-16" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Fetching URL:&quot;</span> <span class="op">&lt;&lt;</span> url<span class="op">.</span>toString<span class="op">();</span></span>
+<span id="cb78-17"><a href="#cb78-17" tabindex="-1"></a>    request<span class="op">.</span>setRawHeader<span class="op">(</span><span class="st">&quot;Accept&quot;</span><span class="op">,</span> <span class="st">&quot;application/json&quot;</span><span class="op">);</span></span>
+<span id="cb78-18"><a href="#cb78-18" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>options<span class="op">.</span>httpMethod<span class="op">.</span>value_or<span class="op">(</span><span class="st">&quot;GET&quot;</span><span class="op">)</span> <span class="op">==</span> <span class="st">&quot;POST&quot;</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb78-19"><a href="#cb78-19" tabindex="-1"></a>        request<span class="op">.</span>setHeader<span class="op">(</span><span class="ex">QNetworkRequest::ContentTypeHeader</span><span class="op">,</span> <span class="st">&quot;application/json&quot;</span><span class="op">);</span></span>
+<span id="cb78-20"><a href="#cb78-20" tabindex="-1"></a>        manager<span class="op">-&gt;</span>post<span class="op">(</span>request<span class="op">,</span> options<span class="op">.</span>data<span class="op">.</span>value_or<span class="op">(</span><span class="ex">QByteArray</span><span class="op">()));</span></span>
+<span id="cb78-21"><a href="#cb78-21" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb78-22"><a href="#cb78-22" tabindex="-1"></a>        manager<span class="op">-&gt;</span>get<span class="op">(</span>request<span class="op">);</span></span>
+<span id="cb78-23"><a href="#cb78-23" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb78-24"><a href="#cb78-24" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb78-25"><a href="#cb78-25" tabindex="-1"></a></span>
+<span id="cb78-26"><a href="#cb78-26" tabindex="-1"></a><span class="dt">void</span> JsonFetcher<span class="op">::</span>handleNetworkResponse<span class="op">(</span><span class="ex">QNetworkReply</span> <span class="op">*</span>reply<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb78-27"><a href="#cb78-27" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;network request finished 2&quot;</span><span class="op">;</span></span>
+<span id="cb78-28"><a href="#cb78-28" tabindex="-1"></a>    <span class="co">/* make sure reply is deleted under all circumstances */</span></span>
+<span id="cb78-29"><a href="#cb78-29" tabindex="-1"></a>    RAIIGuard guard<span class="op">([</span>reply<span class="op">]</span> <span class="op">{</span> reply<span class="op">-&gt;</span>deleteLater<span class="op">();</span> <span class="op">});</span></span>
+<span id="cb78-30"><a href="#cb78-30" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;handle json response&quot;</span><span class="op">;</span></span>
+<span id="cb78-31"><a href="#cb78-31" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>reply<span class="op">-&gt;</span>error<span class="op">()</span> <span class="op">!=</span> <span class="ex">QNetworkReply::NoError</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb78-32"><a href="#cb78-32" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span>reply<span class="op">-&gt;</span>errorString<span class="op">());</span></span>
+<span id="cb78-33"><a href="#cb78-33" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb78-34"><a href="#cb78-34" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb78-35"><a href="#cb78-35" tabindex="-1"></a>    <span class="kw">auto</span> data <span class="op">=</span> reply<span class="op">-&gt;</span>readAll<span class="op">();</span></span>
+<span id="cb78-36"><a href="#cb78-36" tabindex="-1"></a>    <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;got data&quot;</span> <span class="op">&lt;&lt;</span> data<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;bytes&quot;</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;: utf8=&quot;</span> <span class="op">&lt;&lt;</span> <span class="ex">QString::fromUtf8</span><span class="op">(</span>data<span class="op">);</span></span>
+<span id="cb78-37"><a href="#cb78-37" tabindex="-1"></a>    <span class="kw">auto</span> doc <span class="op">=</span> <span class="ex">QJsonDocument::fromJson</span><span class="op">(</span>data<span class="op">);</span></span>
+<span id="cb78-38"><a href="#cb78-38" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>doc<span class="op">.</span>isNull<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb78-39"><a href="#cb78-39" tabindex="-1"></a>        <span class="ex">emit</span> error<span class="op">(</span><span class="st">&quot;Failed to parse JSON&quot;</span><span class="op">);</span></span>
+<span id="cb78-40"><a href="#cb78-40" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb78-41"><a href="#cb78-41" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb78-42"><a href="#cb78-42" tabindex="-1"></a>    <span class="ex">emit</span> responseReceived<span class="op">(</span>doc<span class="op">);</span></span>
+<span id="cb78-43"><a href="#cb78-43" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-verbindungen-zu-externen-apis-4"
 class="slide section level1">
 <h1>5.3 Fortgeschrittene Qt-Themen / Verbindungen zu externen APIs</h1>
 <h2 id="beispiel-mit-libcurl">Beispiel mit libcurl</h2>
-<div class="sourceCode" id="cb78"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="kw">class</span> HttpClient <span class="op">{</span></span>
-<span id="cb78-2"><a href="#cb78-2" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb78-3"><a href="#cb78-3" tabindex="-1"></a>    HttpClient<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb78-4"><a href="#cb78-4" tabindex="-1"></a>        curl_global_init<span class="op">(</span>CURL_GLOBAL_ALL<span class="op">);</span></span>
-<span id="cb78-5"><a href="#cb78-5" tabindex="-1"></a>        <span class="va">m_curl</span> <span class="op">=</span> curl_easy_init<span class="op">();</span></span>
-<span id="cb78-6"><a href="#cb78-6" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb78-7"><a href="#cb78-7" tabindex="-1"></a>    </span>
-<span id="cb78-8"><a href="#cb78-8" tabindex="-1"></a>    <span class="op">~</span>HttpClient<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb78-9"><a href="#cb78-9" tabindex="-1"></a>        curl_easy_cleanup<span class="op">(</span><span class="va">m_curl</span><span class="op">);</span></span>
-<span id="cb78-10"><a href="#cb78-10" tabindex="-1"></a>        curl_global_cleanup<span class="op">();</span></span>
-<span id="cb78-11"><a href="#cb78-11" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb78-12"><a href="#cb78-12" tabindex="-1"></a>    </span>
-<span id="cb78-13"><a href="#cb78-13" tabindex="-1"></a>    <span class="dt">void</span> get<span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>string<span class="op">&amp;</span> url<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb78-14"><a href="#cb78-14" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_URL<span class="op">,</span> url<span class="op">.</span>c_str<span class="op">());</span></span>
-<span id="cb78-15"><a href="#cb78-15" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_WRITEFUNCTION<span class="op">,</span> writeCallback<span class="op">);</span></span>
-<span id="cb78-16"><a href="#cb78-16" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_WRITEDATA<span class="op">,</span> <span class="op">&amp;</span><span class="va">m_data</span><span class="op">);</span></span>
-<span id="cb78-17"><a href="#cb78-17" tabindex="-1"></a>        curl_easy_perform<span class="op">(</span><span class="va">m_curl</span><span class="op">);</span></span>
-<span id="cb78-18"><a href="#cb78-18" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb78-19"><a href="#cb78-19" tabindex="-1"></a>    </span>
-<span id="cb78-20"><a href="#cb78-20" tabindex="-1"></a>    <span class="bu">std::</span>string data<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb78-21"><a href="#cb78-21" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">m_data</span><span class="op">;</span></span>
-<span id="cb78-22"><a href="#cb78-22" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb78-23"><a href="#cb78-23" tabindex="-1"></a></span>
-<span id="cb78-24"><a href="#cb78-24" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb78-25"><a href="#cb78-25" tabindex="-1"></a>    CURL<span class="op">*</span> <span class="va">m_curl</span><span class="op">;</span></span>
-<span id="cb78-26"><a href="#cb78-26" tabindex="-1"></a>    <span class="bu">std::</span>string <span class="va">m_data</span><span class="op">;</span></span>
-<span id="cb78-27"><a href="#cb78-27" tabindex="-1"></a></span>
-<span id="cb78-28"><a href="#cb78-28" tabindex="-1"></a>    <span class="at">static</span> <span class="dt">size_t</span> writeCallback<span class="op">(</span><span class="dt">char</span><span class="op">*</span> ptr<span class="op">,</span> <span class="dt">size_t</span> size<span class="op">,</span> <span class="dt">size_t</span> nmemb<span class="op">,</span> <span class="bu">std::</span>string<span class="op">*</span> data<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb78-29"><a href="#cb78-29" tabindex="-1"></a>        data<span class="op">-&gt;</span>append<span class="op">(</span>ptr<span class="op">,</span> size <span class="op">*</span> nmemb<span class="op">);</span></span>
-<span id="cb78-30"><a href="#cb78-30" tabindex="-1"></a>        <span class="cf">return</span> size <span class="op">*</span> nmemb<span class="op">;</span></span>
-<span id="cb78-31"><a href="#cb78-31" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb78-32"><a href="#cb78-32" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="kw">class</span> HttpClient <span class="op">{</span></span>
+<span id="cb79-2"><a href="#cb79-2" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb79-3"><a href="#cb79-3" tabindex="-1"></a>    HttpClient<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb79-4"><a href="#cb79-4" tabindex="-1"></a>        curl_global_init<span class="op">(</span>CURL_GLOBAL_ALL<span class="op">);</span></span>
+<span id="cb79-5"><a href="#cb79-5" tabindex="-1"></a>        <span class="va">m_curl</span> <span class="op">=</span> curl_easy_init<span class="op">();</span></span>
+<span id="cb79-6"><a href="#cb79-6" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb79-7"><a href="#cb79-7" tabindex="-1"></a>    </span>
+<span id="cb79-8"><a href="#cb79-8" tabindex="-1"></a>    <span class="op">~</span>HttpClient<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb79-9"><a href="#cb79-9" tabindex="-1"></a>        curl_easy_cleanup<span class="op">(</span><span class="va">m_curl</span><span class="op">);</span></span>
+<span id="cb79-10"><a href="#cb79-10" tabindex="-1"></a>        curl_global_cleanup<span class="op">();</span></span>
+<span id="cb79-11"><a href="#cb79-11" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb79-12"><a href="#cb79-12" tabindex="-1"></a>    </span>
+<span id="cb79-13"><a href="#cb79-13" tabindex="-1"></a>    <span class="dt">void</span> get<span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>string<span class="op">&amp;</span> url<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb79-14"><a href="#cb79-14" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_URL<span class="op">,</span> url<span class="op">.</span>c_str<span class="op">());</span></span>
+<span id="cb79-15"><a href="#cb79-15" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_WRITEFUNCTION<span class="op">,</span> writeCallback<span class="op">);</span></span>
+<span id="cb79-16"><a href="#cb79-16" tabindex="-1"></a>        curl_easy_setopt<span class="op">(</span><span class="va">m_curl</span><span class="op">,</span> CURLOPT_WRITEDATA<span class="op">,</span> <span class="op">&amp;</span><span class="va">m_data</span><span class="op">);</span></span>
+<span id="cb79-17"><a href="#cb79-17" tabindex="-1"></a>        curl_easy_perform<span class="op">(</span><span class="va">m_curl</span><span class="op">);</span></span>
+<span id="cb79-18"><a href="#cb79-18" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb79-19"><a href="#cb79-19" tabindex="-1"></a>    </span>
+<span id="cb79-20"><a href="#cb79-20" tabindex="-1"></a>    <span class="bu">std::</span>string data<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb79-21"><a href="#cb79-21" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">m_data</span><span class="op">;</span></span>
+<span id="cb79-22"><a href="#cb79-22" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb79-23"><a href="#cb79-23" tabindex="-1"></a></span>
+<span id="cb79-24"><a href="#cb79-24" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb79-25"><a href="#cb79-25" tabindex="-1"></a>    CURL<span class="op">*</span> <span class="va">m_curl</span><span class="op">;</span></span>
+<span id="cb79-26"><a href="#cb79-26" tabindex="-1"></a>    <span class="bu">std::</span>string <span class="va">m_data</span><span class="op">;</span></span>
+<span id="cb79-27"><a href="#cb79-27" tabindex="-1"></a></span>
+<span id="cb79-28"><a href="#cb79-28" tabindex="-1"></a>    <span class="at">static</span> <span class="dt">size_t</span> writeCallback<span class="op">(</span><span class="dt">char</span><span class="op">*</span> ptr<span class="op">,</span> <span class="dt">size_t</span> size<span class="op">,</span> <span class="dt">size_t</span> nmemb<span class="op">,</span> <span class="bu">std::</span>string<span class="op">*</span> data<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb79-29"><a href="#cb79-29" tabindex="-1"></a>        data<span class="op">-&gt;</span>append<span class="op">(</span>ptr<span class="op">,</span> size <span class="op">*</span> nmemb<span class="op">);</span></span>
+<span id="cb79-30"><a href="#cb79-30" tabindex="-1"></a>        <span class="cf">return</span> size <span class="op">*</span> nmemb<span class="op">;</span></span>
+<span id="cb79-31"><a href="#cb79-31" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb79-32"><a href="#cb79-32" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-erweiterung-von-qt-mit-plugins"
 class="slide section level1">
@@ -3246,79 +3390,79 @@ LoadLibrary/GetProcAddress auf Windows verwenden kann.</li>
 class="slide section level1">
 <h1>5.4 Fortgeschrittene Qt-Themen / Erweiterung von Qt mit Plugins</h1>
 <h2 id="plugin-interface-definieren">Plugin Interface definieren</h2>
-<div class="sourceCode" id="cb79"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="pp">#ifndef MYPLUGININTERFACE_H</span></span>
-<span id="cb79-2"><a href="#cb79-2" tabindex="-1"></a><span class="pp">#define MYPLUGININTERFACE_H</span></span>
-<span id="cb79-3"><a href="#cb79-3" tabindex="-1"></a></span>
-<span id="cb79-4"><a href="#cb79-4" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QtPlugin&gt;</span></span>
-<span id="cb79-5"><a href="#cb79-5" tabindex="-1"></a></span>
-<span id="cb79-6"><a href="#cb79-6" tabindex="-1"></a><span class="co">// Define an interface with at least one pure virtual function</span></span>
-<span id="cb79-7"><a href="#cb79-7" tabindex="-1"></a><span class="kw">class</span> MyPluginInterface</span>
-<span id="cb79-8"><a href="#cb79-8" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb79-9"><a href="#cb79-9" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb79-10"><a href="#cb79-10" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="op">~</span>MyPluginInterface<span class="op">()</span> <span class="op">{}</span></span>
-<span id="cb79-11"><a href="#cb79-11" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="ex">QString</span> pluginName<span class="op">()</span> <span class="at">const</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb79-12"><a href="#cb79-12" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="ex">QString</span> customFunction1<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>input<span class="op">)</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb79-13"><a href="#cb79-13" tabindex="-1"></a><span class="op">};</span></span>
-<span id="cb79-14"><a href="#cb79-14" tabindex="-1"></a></span>
-<span id="cb79-15"><a href="#cb79-15" tabindex="-1"></a><span class="co">// Export the interface for use in plugins</span></span>
-<span id="cb79-16"><a href="#cb79-16" tabindex="-1"></a><span class="pp">#define MyPluginInterface_iid </span><span class="st">&quot;com.example.MyPluginInterface&quot;</span></span>
-<span id="cb79-17"><a href="#cb79-17" tabindex="-1"></a><span class="ex">Q_DECLARE_INTERFACE</span><span class="op">(</span>MyPluginInterface<span class="op">,</span> MyPluginInterface_iid<span class="op">)</span></span>
-<span id="cb79-18"><a href="#cb79-18" tabindex="-1"></a></span>
-<span id="cb79-19"><a href="#cb79-19" tabindex="-1"></a><span class="pp">#endif </span><span class="co">// MYPLUGININTERFACE_H</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="pp">#ifndef MYPLUGININTERFACE_H</span></span>
+<span id="cb80-2"><a href="#cb80-2" tabindex="-1"></a><span class="pp">#define MYPLUGININTERFACE_H</span></span>
+<span id="cb80-3"><a href="#cb80-3" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="#cb80-4" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QtPlugin&gt;</span></span>
+<span id="cb80-5"><a href="#cb80-5" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="#cb80-6" tabindex="-1"></a><span class="co">// Define an interface with at least one pure virtual function</span></span>
+<span id="cb80-7"><a href="#cb80-7" tabindex="-1"></a><span class="kw">class</span> MyPluginInterface</span>
+<span id="cb80-8"><a href="#cb80-8" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb80-9"><a href="#cb80-9" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb80-10"><a href="#cb80-10" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="op">~</span>MyPluginInterface<span class="op">()</span> <span class="op">{}</span></span>
+<span id="cb80-11"><a href="#cb80-11" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="ex">QString</span> pluginName<span class="op">()</span> <span class="at">const</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb80-12"><a href="#cb80-12" tabindex="-1"></a>    <span class="kw">virtual</span> <span class="ex">QString</span> customFunction1<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>input<span class="op">)</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb80-13"><a href="#cb80-13" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb80-14"><a href="#cb80-14" tabindex="-1"></a></span>
+<span id="cb80-15"><a href="#cb80-15" tabindex="-1"></a><span class="co">// Export the interface for use in plugins</span></span>
+<span id="cb80-16"><a href="#cb80-16" tabindex="-1"></a><span class="pp">#define MyPluginInterface_iid </span><span class="st">&quot;com.example.MyPluginInterface&quot;</span></span>
+<span id="cb80-17"><a href="#cb80-17" tabindex="-1"></a><span class="ex">Q_DECLARE_INTERFACE</span><span class="op">(</span>MyPluginInterface<span class="op">,</span> MyPluginInterface_iid<span class="op">)</span></span>
+<span id="cb80-18"><a href="#cb80-18" tabindex="-1"></a></span>
+<span id="cb80-19"><a href="#cb80-19" tabindex="-1"></a><span class="pp">#endif </span><span class="co">// MYPLUGININTERFACE_H</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-erweiterung-von-qt-mit-plugins-2"
 class="slide section level1">
 <h1>5.4 Fortgeschrittene Qt-Themen / Erweiterung von Qt mit Plugins</h1>
 <h2 id="plugin-interface-implementieren">Plugin Interface
 implementieren</h2>
-<div class="sourceCode" id="cb80"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;MyPluginInterface.h&quot;</span></span>
-<span id="cb80-2"><a href="#cb80-2" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QObject&gt;</span></span>
-<span id="cb80-3"><a href="#cb80-3" tabindex="-1"></a></span>
-<span id="cb80-4"><a href="#cb80-4" tabindex="-1"></a><span class="kw">class</span> MyPlugin <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span><span class="op">,</span> <span class="kw">public</span> MyPluginInterface</span>
-<span id="cb80-5"><a href="#cb80-5" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb80-6"><a href="#cb80-6" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
-<span id="cb80-7"><a href="#cb80-7" tabindex="-1"></a>    <span class="ex">Q_PLUGIN_METADATA</span><span class="op">(</span>IID MyPluginInterface_iid<span class="op">)</span></span>
-<span id="cb80-8"><a href="#cb80-8" tabindex="-1"></a>    <span class="ex">Q_INTERFACES</span><span class="op">(</span>MyPluginInterface<span class="op">)</span></span>
-<span id="cb80-9"><a href="#cb80-9" tabindex="-1"></a></span>
-<span id="cb80-10"><a href="#cb80-10" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb80-11"><a href="#cb80-11" tabindex="-1"></a>    <span class="ex">QString</span> pluginName<span class="op">()</span> <span class="at">const</span> <span class="kw">override</span> <span class="op">{</span></span>
-<span id="cb80-12"><a href="#cb80-12" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Example Plugin&quot;</span><span class="op">;</span></span>
-<span id="cb80-13"><a href="#cb80-13" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb80-14"><a href="#cb80-14" tabindex="-1"></a>    <span class="ex">QString</span> customFunction1<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>input<span class="op">)</span> <span class="kw">override</span> <span class="op">{</span></span>
-<span id="cb80-15"><a href="#cb80-15" tabindex="-1"></a>        <span class="cf">return</span> processInput<span class="op">(</span>input<span class="op">);</span></span>
-<span id="cb80-16"><a href="#cb80-16" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb80-17"><a href="#cb80-17" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;MyPluginInterface.h&quot;</span></span>
+<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QObject&gt;</span></span>
+<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a><span class="kw">class</span> MyPlugin <span class="op">:</span> <span class="kw">public</span> <span class="ex">QObject</span><span class="op">,</span> <span class="kw">public</span> MyPluginInterface</span>
+<span id="cb81-5"><a href="#cb81-5" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb81-6"><a href="#cb81-6" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
+<span id="cb81-7"><a href="#cb81-7" tabindex="-1"></a>    <span class="ex">Q_PLUGIN_METADATA</span><span class="op">(</span>IID MyPluginInterface_iid<span class="op">)</span></span>
+<span id="cb81-8"><a href="#cb81-8" tabindex="-1"></a>    <span class="ex">Q_INTERFACES</span><span class="op">(</span>MyPluginInterface<span class="op">)</span></span>
+<span id="cb81-9"><a href="#cb81-9" tabindex="-1"></a></span>
+<span id="cb81-10"><a href="#cb81-10" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb81-11"><a href="#cb81-11" tabindex="-1"></a>    <span class="ex">QString</span> pluginName<span class="op">()</span> <span class="at">const</span> <span class="kw">override</span> <span class="op">{</span></span>
+<span id="cb81-12"><a href="#cb81-12" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Example Plugin&quot;</span><span class="op">;</span></span>
+<span id="cb81-13"><a href="#cb81-13" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb81-14"><a href="#cb81-14" tabindex="-1"></a>    <span class="ex">QString</span> customFunction1<span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>input<span class="op">)</span> <span class="kw">override</span> <span class="op">{</span></span>
+<span id="cb81-15"><a href="#cb81-15" tabindex="-1"></a>        <span class="cf">return</span> processInput<span class="op">(</span>input<span class="op">);</span></span>
+<span id="cb81-16"><a href="#cb81-16" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb81-17"><a href="#cb81-17" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 </div>
 <div id="fortgeschrittene-qt-themen-erweiterung-von-qt-mit-plugins-3"
 class="slide section level1">
 <h1>5.4 Fortgeschrittene Qt-Themen / Erweiterung von Qt mit Plugins</h1>
 <h2 id="plugin-verwenden-mit-qpluginloader">Plugin verwenden mit
 QPluginLoader</h2>
-<div class="sourceCode" id="cb81"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QPluginLoader&gt;</span></span>
-<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QDebug&gt;</span></span>
-<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;MyPluginInterface.h&quot;</span></span>
-<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a></span>
-<span id="cb81-5"><a href="#cb81-5" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
-<span id="cb81-6"><a href="#cb81-6" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb81-7"><a href="#cb81-7" tabindex="-1"></a>    <span class="ex">QCoreApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
-<span id="cb81-8"><a href="#cb81-8" tabindex="-1"></a>    <span class="ex">QPluginLoader</span> loader<span class="op">(</span><span class="st">&quot;path/to/plugin/libMyPlugin.so&quot;</span><span class="op">);</span> <span class="co">// Adjust the path</span></span>
-<span id="cb81-9"><a href="#cb81-9" tabindex="-1"></a>    <span class="ex">QObject</span> <span class="op">*</span>plugin <span class="op">=</span> loader<span class="op">.</span>instance<span class="op">();</span></span>
-<span id="cb81-10"><a href="#cb81-10" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>plugin<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb81-11"><a href="#cb81-11" tabindex="-1"></a>        MyPluginInterface <span class="op">*</span>myPlugin <span class="op">=</span> <span class="fu">qobject_cast</span><span class="op">&lt;</span>MyPluginInterface <span class="op">*&gt;(</span>plugin<span class="op">);</span></span>
-<span id="cb81-12"><a href="#cb81-12" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>myPlugin<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb81-13"><a href="#cb81-13" tabindex="-1"></a>            <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Loaded plugin:&quot;</span> <span class="op">&lt;&lt;</span> myPlugin<span class="op">-&gt;</span>pluginName<span class="op">();</span></span>
-<span id="cb81-14"><a href="#cb81-14" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb81-15"><a href="#cb81-15" tabindex="-1"></a>            <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to cast plugin interface.&quot;</span><span class="op">;</span></span>
-<span id="cb81-16"><a href="#cb81-16" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb81-17"><a href="#cb81-17" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb81-18"><a href="#cb81-18" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to load plugin:&quot;</span> <span class="op">&lt;&lt;</span> loader<span class="op">.</span>errorString<span class="op">();</span></span>
-<span id="cb81-19"><a href="#cb81-19" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb81-20"><a href="#cb81-20" tabindex="-1"></a></span>
-<span id="cb81-21"><a href="#cb81-21" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
-<span id="cb81-22"><a href="#cb81-22" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QPluginLoader&gt;</span></span>
+<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QDebug&gt;</span></span>
+<span id="cb82-3"><a href="#cb82-3" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;MyPluginInterface.h&quot;</span></span>
+<span id="cb82-4"><a href="#cb82-4" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="#cb82-5" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
+<span id="cb82-6"><a href="#cb82-6" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb82-7"><a href="#cb82-7" tabindex="-1"></a>    <span class="ex">QCoreApplication</span> app<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
+<span id="cb82-8"><a href="#cb82-8" tabindex="-1"></a>    <span class="ex">QPluginLoader</span> loader<span class="op">(</span><span class="st">&quot;path/to/plugin/libMyPlugin.so&quot;</span><span class="op">);</span> <span class="co">// Adjust the path</span></span>
+<span id="cb82-9"><a href="#cb82-9" tabindex="-1"></a>    <span class="ex">QObject</span> <span class="op">*</span>plugin <span class="op">=</span> loader<span class="op">.</span>instance<span class="op">();</span></span>
+<span id="cb82-10"><a href="#cb82-10" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>plugin<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb82-11"><a href="#cb82-11" tabindex="-1"></a>        MyPluginInterface <span class="op">*</span>myPlugin <span class="op">=</span> <span class="fu">qobject_cast</span><span class="op">&lt;</span>MyPluginInterface <span class="op">*&gt;(</span>plugin<span class="op">);</span></span>
+<span id="cb82-12"><a href="#cb82-12" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>myPlugin<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb82-13"><a href="#cb82-13" tabindex="-1"></a>            <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Loaded plugin:&quot;</span> <span class="op">&lt;&lt;</span> myPlugin<span class="op">-&gt;</span>pluginName<span class="op">();</span></span>
+<span id="cb82-14"><a href="#cb82-14" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb82-15"><a href="#cb82-15" tabindex="-1"></a>            <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to cast plugin interface.&quot;</span><span class="op">;</span></span>
+<span id="cb82-16"><a href="#cb82-16" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb82-17"><a href="#cb82-17" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb82-18"><a href="#cb82-18" tabindex="-1"></a>        <span class="fu">qDebug</span><span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot;Failed to load plugin:&quot;</span> <span class="op">&lt;&lt;</span> loader<span class="op">.</span>errorString<span class="op">();</span></span>
+<span id="cb82-19"><a href="#cb82-19" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb82-20"><a href="#cb82-20" tabindex="-1"></a></span>
+<span id="cb82-21"><a href="#cb82-21" tabindex="-1"></a>    <span class="cf">return</span> app<span class="op">.</span>exec<span class="op">();</span></span>
+<span id="cb82-22"><a href="#cb82-22" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div
 id="veröffentlichung-ihrer-qt-anwendung-erstellen-sie-ein-installationsprogramm"
