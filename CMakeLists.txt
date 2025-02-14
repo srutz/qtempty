@@ -14,19 +14,16 @@ find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+    main.cpp
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
 )
 
 qt_add_executable(TableView
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
-    mymodel.h mymodel.cpp
     icons.qrc
-    sheetpanel.h sheetpanel.cpp
-    animatedwidget.h
 )
 
 target_link_libraries(TableView PRIVATE Qt6::Widgets)
