@@ -62,11 +62,32 @@ public:
         return m_map[key];
     }
 
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override {
+        Coord coord(index.row(), index.column());
+        auto oldValue = m_map[coord];
+        qDebug() << "set value" << index << oldValue << value << value.typeId();
+        if (!value.isValid() || (value.typeId() == 10 && value.toString().trimmed().size() == 0)) {
+            m_map.remove(coord);
+        } else {
+            m_map[coord] = value;
+        }
+        return true;
+    }
+
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override {
         if (role != Qt::DisplayRole)
             return QVariant();
         return QVariant(section + 1);
     }
+
+    Qt::ItemFlags flags(const QModelIndex &index) const override {
+        if (!index.isValid()) {
+            return Qt::NoItemFlags;
+        }
+        return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
+    }
+
+
 };
 
 #endif // MODEL_H
