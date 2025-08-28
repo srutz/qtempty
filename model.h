@@ -6,6 +6,10 @@
 #include <QMap>
 #include <QVariant>
 #include <QPoint>
+#include <QFont>
+#include <QColor>
+
+static QFont boldFont("Times New Roman", 14, QFont::Bold);
 
 /* Class for kex in values-hashmap
  * can be used in QMap and QHash
@@ -52,14 +56,32 @@ public:
     }
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override {
-        if (!index.isValid() || role != Qt::DisplayRole) {
+        if (!index.isValid()) {
             return QVariant();
         }
         Coord key(index.row(), index.column());
-        if (!m_map.contains(key)) {
+        if (role == Qt::FontRole) {
+            return boldFont;
+        } else if (role == Qt::TextAlignmentRole) {
+            return QVariant(Qt::AlignRight | Qt::AlignVCenter);
+        } else if (role == Qt::ForegroundRole) {
+            // show negative numbers in red
+            auto val = m_map[key];
+            bool ok = false;
+            auto v = val.toDouble(&ok);
+            if (ok && v < 0) {
+                return QColor(255, 0, 0);
+            } else if (ok && v > 0) {
+                return QColor(0, 128, 0);
+            }
             return QVariant();
+        } else if (role == Qt::DisplayRole) {
+            if (!m_map.contains(key)) {
+                return QVariant();
+            }
+            return m_map[key];
         }
-        return m_map[key];
+        return QVariant();
     }
 
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override {
